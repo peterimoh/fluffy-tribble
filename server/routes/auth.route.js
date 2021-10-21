@@ -14,4 +14,7 @@ router.post(
   auth.PreSignup
 );
 
+router.post('/signup-redirect', auth.Signup)
+router.post('/login', userSigninValidator, runValidator, auth.Login)
+
 module.exports = router;

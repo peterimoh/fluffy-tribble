@@ -1,0 +1,175 @@
+
+/*-----------------------------------
+    2 - Sections
+------------------------------------*/
+.sec-main {
+  box-shadow: 0 5px 15px 0 rgba(110, 110, 110, 0.1);
+  border-radius: 15px;
+  position: relative;
+  padding: 80px 80px;
+}
+
+.sec-sec {
+  box-shadow: 0 5px 15px 0 rgba(110, 110, 110, 0.1);
+  border-radius: 15px;
+  position: relative;
+  padding: 30px 30px;
+}
+
+.sec-uping {
+  margin-top: -435px;
+  position: relative;
+  z-index: 1;
+}
+
+.sec-up {
+  margin: -100px 0px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.sec-up-slider {
+  margin: -120px 0px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.sec-normal {
+  padding: 100px 0px;
+  position: relative;
+  z-index: 0;
+}
+
+.sec-bg1 {
+  background-color: #ffffff;
+}
+
+.sec-bg2 {
+  background-color: #efefef;
+}
+
+.sec-bg3 {
+  background-color: #15212a;
+}
+
+.sec-bg4 {
+  background-color: #fdd700;
+}
+
+.sec-bg6 {
+  background-color: #1d262f;
+}
+
+.sec-grad-yellow-to-grey-left {
+  background: linear-gradient(90deg, #fdd700 70%, #d9dde4 10%) !important;
+}
+
+.sec-grad-yellow-to-grey-right {
+  background: linear-gradient(90deg, #d9dde4 70%, #fdd700 10%) !important;
+}
+
+.sec-grad-yellow-to-white-right {
+  background: linear-gradient(90deg, #ffffff 70%, #fdd700 10%) !important;
+}
+
+.sec-grad-yellow-to-black-right {
+  background: linear-gradient(90deg, #15212a 70%, #fdd700 10%) !important;
+}
+
+.sec-grad-black-to-yellow-left {
+  background: linear-gradient(90deg, #fdd700 30%, #15212a 0%) !important;
+}
+
+.sec-grad-grey-to-grey {
+  background: linear-gradient(-60deg, #3a6173 0%, #16222a 100%) !important;
+}
+
+.total-grad {
+  position: absolute;
+  display: block;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.total-grad-inverse {
+  position: absolute;
+  display: block;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.total-grad-grey {
+  background: linear-gradient(-60deg, #3a6173 0%, #16222a 100%) !important;
+  position: absolute;
+  display: block;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.total-grad-grey-inverse {
+  background: linear-gradient(240deg, #16222a 0%, #3a6173 100%);
+  position: absolute;
+  display: block;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.total-grad-pink-blue-intense {
+  position: absolute;
+  display: block;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.section-heading {
+  font-family: 'Open Sans Bold';
+  font-size: 52px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  position: relative;
+  display: inline-block;
+  color: #181b22;
+  line-height: 52px;
+}
+
+.section-heading.light {
+  color: #fff;
+}
+
+.section-subheading {
+  font-family: 'Open Sans';
+  position: relative;
+  color: #4c4a4a;
+  font-size: 18px;
+  line-height: 34px;
+}
+
+.path-left {
+  position: absolute;
+  height: 100%;
+  right: 30%;
+  top: 0;
+}
+
+.path-right {
+  position: absolute;
+  height: 100%;
+  left: 70%;
+  top: 0;
+}

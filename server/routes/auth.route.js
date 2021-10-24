@@ -8,13 +8,13 @@ const {
 const { runValidation } = require('../validators/run.validate');
 
 router.post(
-  '/pre-activate',
+  '/presignup',
   userSignupValidator,
   runValidation,
-  auth.PreSignup
+  auth.preSignup
 );
 
 router.post('/signup-redirect', auth.Signup)
-router.post('/login', userSigninValidator, runValidator, auth.Login)
+router.post('/login', userSigninValidator, runValidation, auth.Login)
 
 module.exports = router;

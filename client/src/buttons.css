@@ -1,0 +1,169 @@
+
+/*-----------------------------------
+    5 - Buttons
+------------------------------------*/
+.btnnn {
+  text-transform: capitalize;
+  cursor: pointer !important;
+  border: 1px solid #4c4a4a;
+  border-radius: 50px;
+  color: #4c4a4a;
+  font-size: 16px;
+  margin: 0;
+  padding: 15px 30px;
+  position: relative;
+  background-color: transparent;
+  letter-spacing: 0.2px;
+  font-family: 'Open Sans Bold';
+  box-shadow: 0 2px 8px 0 rgb(62 62 79 / 23%);
+  -webkit-transition: all 300ms linear 0ms;
+  -moz-transition: all 300ms linear 0ms;
+  -ms-transition: all 300ms linear 0ms;
+  transition: all 300ms linear 0ms;
+}
+
+.btn:hover {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+.btn-default-pink:hover {
+  color: #ffffff;
+}
+
+.btn-default-purple:hover {
+  color: #ffffff;
+}
+
+.btn-default:hover {
+  outline: medium none !important;
+  text-decoration: none !important;
+  color: #fff !important;
+  background-color: #4c4a4a !important;
+  border-color: #4c4a4a !important;
+}
+
+.btn-default-grad-purple-fill {
+  color: #ffffff;
+  border: none;
+  background-size: 300% 100%;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-default-grad-purple-fill:hover {
+  color: #ffffff;
+  background-position: 100% 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-default-pink-fill {
+  color: #fff !important;
+  border: none;
+}
+
+.btn-default-pink-fill:hover {
+  background-color: #4c4a4a !important;
+  color: #fff !important;
+  border: none;
+}
+
+.btn-default-yellow-fill {
+  background-color: #fdd700 !important;
+  color: #000 !important;
+  border: none;
+}
+
+.btn-default-yellow-fill:hover {
+  background-color: #4c4a4a !important;
+  color: #fff !important;
+  border: none;
+}
+
+.btn-default-purple-fill {
+  color: #fff !important;
+  border: none;
+}
+
+.btn-default-purple-fill:hover {
+  background-color: #4c4a4a !important;
+  color: #fff !important;
+  border: none;
+}
+
+.btn-default-fill {
+  background-color: #4c4a4a !important;
+  color: #fff !important;
+  border: none;
+}
+
+.btn-default-fill:hover {
+  background-color: #fdd700 !important;
+  color: #000 !important;
+  border: none;
+}
+
+.btn.question {
+  top: -2px;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  font-size: 10px;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active {
+  opacity: 1;
+  color: #000 !important;
+  background-color: #fdd700;
+  border: solid 1px #fdd700;
+  border-radius: 18px;
+  padding: 12px 14px;
+}
+
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+  border-radius: 18px;
+  padding: 12px 14px;
+  color: #4c4a4a;
+}
+
+.btn-secondary:not(:disabled):not(.disabled) {
+  opacity: 0.6;
+  background-color: #fff;
+  border-color: #efefef;
+  border-radius: 15px;
+  padding: 13px 12px 12px 12px;
+}
+
+.btn-group > .btn:not(:first-child) {
+  opacity: 0.6;
+  background-color: #fff;
+  border: solid 1px #d6d6d6;
+  border-radius: 18px;
+  padding: 12px 14px;
+  color: #4c4a4a;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2fr;
+}
+
+.btn-group .btn + .btn {
+  margin-left: 5px;
+}
+
+.btn-group.toplang .btn + .btn {
+  margin-left: 0px;
+}
+
+.btn-secondary:hover {
+  background-color: #4c4a4a;
+}

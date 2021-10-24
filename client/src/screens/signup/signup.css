@@ -1,0 +1,6 @@
+#signup{
+  height: 100%;
+  background: linear-gradient(120deg,rgba(9, 9, 14, 0.733), rgba(9, 9, 14, 0.473)), url('https://images.pexels.com/photos/6466141/pexels-photo-6466141.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+  background-position: center;
+  background-size: cover;
+}

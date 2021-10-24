@@ -3,7 +3,7 @@
 /**
  * Get unique error field name
  */
-exports.getUniqueErrorMessage = (err) => {
+const getUniqueErrorMessage = (err) => {
   let output;
   try {
     let fieldName = err.message.substring(

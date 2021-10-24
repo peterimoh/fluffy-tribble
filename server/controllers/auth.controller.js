@@ -6,7 +6,7 @@ const {
   activateUserTemp,
   registerUserTemp,
 } = require('../helper/email.template');
-const { errorHandler } = require('../helper/dbErrorHandler');
+const { getErrorMessage } = require('../helper/dbErrorHandler');
 const config = require('../config/config');
 
 //encrypt password
@@ -19,8 +19,9 @@ async function validatePassword(password, hashedPassword) {
   return await bcrypt.compare(password, hashedPassword);
 }
 
-exports.PreSignup = async (req, res) => {
+exports.preSignup = async (req, res) => {
   const { username, first_name, last_name, email, password } = req.body;
+
   const newUser = User.findOne(
     { email: email.toLowerCase() },
     async (err, user) => {
@@ -29,6 +30,7 @@ exports.PreSignup = async (req, res) => {
           error: 'Email Already Exist!',
         });
       }
+
       const usr = { username, first_name, last_name, email, password };
       const token = jwt.sign(usr, config.jwtRegister, { expiresIn: '10m' });
 
@@ -41,10 +43,15 @@ exports.PreSignup = async (req, res) => {
             } else {
               console.log(`**Email Sent**`);
             }
-          });
-        };
+            // return
+          })
+        }
         sendEmail();
-        res.status(200).json({ msg: 'Email Sent, Activate account' });
+        res
+          .status(200)
+          .json({
+            msg: 'An Activation E-mail has been sent to your mail, this email will expire in 10 minutes. follow the link to activate account',
+          });
       } catch (err) {
         console.log(err);
       }
@@ -53,40 +60,52 @@ exports.PreSignup = async (req, res) => {
 };
 
 exports.Signup = async (req, res) => {
-  const { token } = req.body;
+   const {token} = req.body
+   if (token) {
+     jwt.verify(token, config.jwtRegister,  async(err, decode)=> {
+       if (err) {
+         console.log(err);
+         return res.status(401).json({
+           error: 'Expired link. Signup again',
+         });
+       }
+       const { username, first_name, last_name, email, password } =
+         jwt.decode(token);
 
-  jwt.verify(token, config.jwtRegister, (err, decode) => {
-    if (err)
-      return res.status(403).json({ error: 'Expired Link, Sign-up Again' });
-  });
+       //create profile
+       const profile = `${config.client_url}/profile/${username}`;
 
-  const { first_name, last_name, email, password, username } =
-    jwt.decode(token);
+       const hashPswd = await hashPassword(password)
 
-  //create username and profile
-  const profile = `${config.client_url}/profile/${username}`;
-  const hashed_Password = await hashPassword(password);
-
-  const newUser = new User({
-    first_name,
-    last_name,
-    password: hashed_Password,
-    profile,
-    username,
-    email,
-  });
-
-  newUser.save((err, user) => {
-    if (err) return res.status(403).json({ error: errorHandler(err) });
-    return res
-      .status(200)
-      .json({ msg: 'Sign-up success!, you can now log-in' });
-  });
+       const NewUser = new User({
+         username,
+         first_name,
+         last_name,
+         email,
+         password: hashPswd,
+         profile
+       });
+       NewUser.save((err, user) => {
+         if (err) {
+           return res.status(401).json({
+             error: getErrorMessage(err),
+           });
+         }
+         return res.json({
+           message: 'Signup success!, now you can sign in',
+         });
+       });
+     });
+   } else {
+     return res.status(400).json({
+       error: 'Something went wrong. Try again',
+     });
+   }
 };
 
 exports.Login = async (req, res) => {
   const { email, password } = req.body;
-
+  // console.log(req.body)
   await User.findOne({ email }).exec((err, user) => {
     if (err || !user)
       return res.status(404).json({
@@ -106,3 +125,12 @@ exports.Login = async (req, res) => {
     return res.status(200).json({ token, user: { _id, username, email } });
   });
 };
+
+exports.SignOut = (req, res) => {
+  res.clearCookie('token');
+  res.json({
+    message: 'Signout Successful!',
+  });
+};
+
+// exports.requireSignin =

@@ -1,0 +1,247 @@
+
+/*-----------------------------------
+    16 - Footer
+------------------------------------*/
+.footer {
+  position: relative;
+  z-index: 0;
+  background-color: #15212a;
+  background-position: center;
+  border: none;
+}
+
+.footer .tag {
+  float: none;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.footer .footer-top {
+  padding: 80px 0px 20px 0px;
+}
+
+.footer .footer-top .col-md-3.col-sm-6 {
+  margin-bottom: 10px;
+}
+
+.footer .logo-footer {
+  width: 130px;
+}
+
+.footer .heading {
+  font-size: 24px;
+  font-family: 'Open Sans Semibold';
+  color: #fff;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.footer .soc-icons {
+  padding-top: 0;
+  padding-left: 0;
+}
+
+.footer .soc-icons i:before {
+  font-size: 18px;
+}
+
+.footer .soc-icons a {
+  display: inline-block;
+  margin: 0px 10px 20px 0px;
+}
+
+.footer .soc-icons a:hover {
+  color: #fdd700;
+  text-decoration: none;
+}
+
+.footer .soc-icons a:hover i {
+  color: #fdd700;
+}
+
+.footer .contact {
+  font-size: 16px;
+  font-family: 'Open Sans';
+  color: #b9bac8;
+}
+
+.footer .contact a {
+  color: #b9bac8;
+}
+
+.footer .contact a:hover {
+  text-decoration: none;
+  color: #fdd700;
+}
+
+.footer .contact a:hover i {
+  color: #fdd700;
+}
+
+.footer .contact i {
+  color: #858585;
+}
+
+.footer .contact i:before {
+  margin-left: 0;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.footer .payment-list {
+  float: right;
+  color: #90a4ae;
+  list-style-type: none;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.footer .payment-list li {
+  display: inline-block;
+  margin-right: 3px;
+  font-size: 42px;
+}
+
+.footer .payment-list li:last-child {
+  margin-right: 0px;
+}
+
+.footer .payment-list li p {
+  margin-bottom: 0px;
+  color: #aaaaaa;
+  font-family: 'Open Sans Semibold';
+  font-size: 14px;
+  margin-right: 20px;
+  display: table;
+}
+
+.footer .payment-list li i {
+  color: #aaaaaa;
+}
+
+.footer .payment-list li i:hover {
+  color: #fdd700;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.footer .copyrigh {
+  font-family: 'Open Sans Semibold';
+  font-size: 14px;
+  color: #aaaaaa;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.footer h6 {
+  margin-top: 15px;
+  color: #b0bec5;
+  line-height: 24px;
+}
+
+.footer .footer-menu {
+  float: left;
+  padding: 0px;
+  margin: 0px;
+}
+
+.footer .footer-menu .menu-item {
+  font-family: 'Open Sans';
+  font-size: 18px;
+  display: block;
+  list-style-type: none;
+  margin-top: 15px;
+  margin-left: 0;
+  text-align: left;
+}
+
+.footer .footer-menu .menu-item a {
+  color: #aaaaaa;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.footer .footer-menu .menu-item a:hover {
+  text-decoration: none;
+  color: #fdd700;
+}
+
+.footer .footer-menu {
+  padding: 0;
+  float: none;
+}
+
+.footer .footer-menu .menu-item.by {
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.footer .footer-bottom {
+  padding: 0px 0px 40px 0px;
+}
+
+.footer .footer-bottom .footer-menu {
+  position: relative;
+  top: 3px;
+}
+
+.footer .footer-bottom .footer-menu .menu-item {
+  font-family: 'Open Sans Semibold';
+  display: inline;
+  margin-left: 20px;
+  vertical-align: sub;
+}
+
+.footer .soc-icons i {
+  background-color: #fff;
+  display: block;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 15px;
+  width: 42px;
+  transition: 0.3s;
+  box-shadow: 0 2px 8px 0 rgba(62, 62, 79, 0.15);
+}
+
+.footer .soc-icons i:hover {
+  color: #fdd700;
+}
+
+.footer .soc-icons.top-icons i {
+  margin-right: 11px;
+  margin-left: 11px;
+}
+
+.footer .logo-bg {
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 0px;
+  width: 600px;
+  position: absolute;
+  opacity: 0.3;
+  margin-top: 40px;
+  z-index: -1;
+}
+
+.footer .footer-menu #drop-lng input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}
+
+[type='email'],
+[type='number'],
+[type='tel'],
+[type='url'] {
+  direction: ltr;
+}

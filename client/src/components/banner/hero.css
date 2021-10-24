@@ -1,0 +1,114 @@
+
+/*-----------------------------------
+    4 - Banner
+------------------------------------*/
+.top-banner .subheading {
+  font-family: 'Open Sans';
+  color: #fff;
+  position: relative;
+  line-height: 32px;
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+.top-banner .subheading.left {
+  margin-left: 0;
+}
+
+.top-banner .subheading {
+  color: #fff;
+}
+
+.top-banner .subheading span {
+  width: 100%;
+  text-align: center;
+  font-family: 'Open Sans';
+}
+
+.top-banner.overlay .heading {
+  color: #fff;
+}
+
+.top-banner.overlay .subheading {
+  color: #fff;
+}
+
+.top-banner.overlay .btn {
+  font-size: 18px;
+  padding: 15px;
+  font-family: Open Sans;
+}
+
+.top-banner .heading {
+  position: relative;
+  margin-bottom: 20px;
+  color: #fff;
+  display: inline-block;
+  font-family: 'Open Sans Bold';
+  line-height: 78px;
+  font-size: 72px;
+  letter-spacing: 1px;
+}
+
+.top-header {
+  /* overflow: hidden; */
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 150px;
+  padding-bottom: 90px;
+}
+
+.top-header.overlay:before {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.top-header .wrapper {
+  position: relative;
+}
+
+.top-header .wrapper .heading {
+  font-family: 'Poppins Bold';
+  font-size: 72px;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.top-header .wrapper .subheading {
+  font-family: 'Open Sans';
+  color: #fff;
+  position: relative;
+  font-size: 22px;
+  margin-bottom: 50px;
+}
+
+.top-header .wrapper .subheding {
+  font-family: 'Open Sans';
+  font-size: 18px;
+  color: #eaeaea;
+  line-height: 32px;
+}
+
+.top-header .wrapper .subheding .link {
+  color: #fff;
+  padding-left: 8px;
+  padding-right: 10px;
+}
+
+.top-header .wrapper .subheding i {
+  font-size: 10px;
+}
+
+.top-header .wrapper .subheding .link:first-child {
+  padding-left: 0px;
+}
+
+.top-header .wrapper .subheding .link.active {
+  color: #fdd700;
+  font-weight: bold;
+}
+
+.top-header .wrapper .subheding .link:hover {
+  text-decoration: none;
+  color: #fdd700;
+}

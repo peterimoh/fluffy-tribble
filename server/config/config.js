@@ -10,10 +10,10 @@ const config = {
       (process.env.IP || 'localhost') +
       ':' +
       (process.env.MONGO_PORT || '27017') +
-    '/vpsserve',
+      '/vpsserve',
   email: process.env.EMAIL || 'alivps39@gmail.com',
   pass: process.env.PASS || 'Alibackendmailer22',
-  client_url: process.env.CLIENT_URL || 'http://localhost:3000'
+  client_url: process.env.CLIENT_URL || 'http://localhost:3000',
 };
 
-module.exports = config
+module.exports = config;

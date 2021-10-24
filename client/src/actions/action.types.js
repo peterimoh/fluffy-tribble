@@ -1,0 +1,14 @@
+// create account actions
+export const CREATE_ACCOUNT_REQUEST = 'CREATE_ACCOUNT_REQUEST';
+export const CREATE_ACCOUNT_SUCCESS = 'CREATE_ACCOUNT_SUCCESS';
+export const CREATE_ACCOUNT_FAIL = 'CREATE_ACCOUNT_FAIL';
+
+// activate account action
+export const ACTIVATE_ACCOUNT = 'ACTIVATE_ACCOUNT';
+export const ACTIVATE_ACCOUNT_SUCCESS = 'ACTIVATE_ACCOUNT_SUCCESS';
+export const ACTIVATE_ACCOUNT_FAIL = 'ACTIVATE_ACCOUNT_FAIL';
+
+//login
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';

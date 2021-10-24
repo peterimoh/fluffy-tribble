@@ -1,0 +1,32 @@
+#topbar .sec-bg3 {
+  background-color: #15212a;
+}
+
+#topbar .infonews small {
+  color: #bcbcbc !important;
+}
+
+#topbar .infonews-nav li {
+  position: relative;
+  display: inline-block;
+}
+
+#topbar .infonews-nav a {
+  color: #bcbcbc !important;
+  font-size: 13px;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  vertical-align: text-top;
+}
+
+#topbar .infonews-nav a:last-child {
+  font-family: Open Sans Extrabold;
+}
+
+#topbar .infonews-nav a:hover {
+  text-decoration: none;
+  color: #ffffff !important;
+}
+
+

@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const activateUserTemp = (usr, token) => {
-  const link = `http://localhost:${config.port}/api/signup/${token}`;
+  const link = `${config.client_url}/activateaccount?${token}`;
   const from = config.email;
   const to = usr.email;
   const subject = 'Account Activation';
@@ -18,7 +18,7 @@ const activateUserTemp = (usr, token) => {
     <p>Dear ${usr.username},</p>
     <p>Thank you for registering for our service</p>
     <p><b>this email will expire in 10 minutes</b></p>
-    <h4>Please follow the <a href='localhost:${config.port}/auth/account/activate/${token}'>Link</a> to activate your account and complete your registration</h4>
+    <h4>Please follow the <a href='${config.client_url}/activateaccount?${token}'>Link</a> to activate your account and complete your registration</h4>
     or <a href=${link}>click here to activate</a>
     <p>${link}</p>
     `;

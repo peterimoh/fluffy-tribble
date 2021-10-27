@@ -1,4 +1,3 @@
-
 /*-----------------------------------
     22 - Responsive
 ------------------------------------*/
@@ -860,10 +859,10 @@
   }
 
   .btn.cd-filter-trigger {
-   padding: 0 20px;
-    display: inline-block!important;
-    width: auto!important;
-    text-indent: initial!important;
+    padding: 0 20px;
+    display: inline-block !important;
+    width: auto !important;
+    text-indent: initial !important;
   }
 
   .cd-main-content.animated {
@@ -968,7 +967,7 @@
 
   .menu-wrap.mobile {
     display: block;
-	background: #fff;
+    background: #fff;
   }
 
   .menu-wrap.mobile.active .logo-menu {
@@ -1673,6 +1672,10 @@
 }
 
 @media (min-width: 768px) {
+  .btnnn.cd-filter-trigger {
+    display: none !important;
+  }
+
   .cd-filter {
     position: relative;
     width: 100% !important;
@@ -1760,6 +1763,16 @@
   .chars {
     display: none;
   }
+
+  .sec-up-slider {
+  /* margin: -120px 0px 100px; */
+  position: relative;
+  z-index: 1;
+  margin: 0px !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
 
   .domain-prices {
     display: none;

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { BiFilterAlt } from 'react-icons/bi';
-import Shape from '../assets/images/globe-2x.webp'
+// import Shape from '../assets/images/globe-2x.webp'
 
 const Banner = () => {
     return (
@@ -14,7 +14,7 @@ const Banner = () => {
         data-opacity='1'
         data-translatey='-50'
         style={{
-          background: `linear-gradient(270deg,#6610f24f,#6610f2cf),url('http://inebur.com/antler/template/patterns/cloud3d.svg')`,
+          background: `linear-gradient(270deg,rgb(34 90 37 / 65%), rgb(44 0 116 / 82%)),url('http://inebur.com/antler/template/patterns/cloud3d.svg')`,
         }}
       >
         <div className='container'>

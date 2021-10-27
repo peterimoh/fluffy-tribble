@@ -96,7 +96,7 @@ const Navbar = () => {
                         </Link>
                       )}
                       <Link className='pe-0 me-0 m-4' to='/cart'>
-                        Cart <span className='badge bg-danger '>1</span>
+                        Cart <span className='badge bg-pink'>1</span>
                       </Link>
                     </li>
                   </ul>

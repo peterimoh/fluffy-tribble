@@ -296,7 +296,7 @@ a.plans.badge.feat:hover {
 .nav-menu .main-menu a {
   font: 16px 'Open Sans Semibold';
   margin-right: 35px;
-  color: #0c3d05d5;
+  color: #000;
   position: relative;
   padding: 25px 0px 15px 0px;
   cursor: pointer;

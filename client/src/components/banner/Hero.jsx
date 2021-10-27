@@ -44,9 +44,9 @@ const Hero = () => {
                     <small>Highlights</small>
                   </Link>
                 </h3>
-                <Link to='#' className='btnnn btn-default-pink-fill cd-filter-trigger wow animated shake delay-2s'>
+                {/* <Link to='#' className='btnnn btn-default-pink-fill cd-filter-trigger wow animated shake delay-2s'>
                   <BiFilterAlt/> Show Filter
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

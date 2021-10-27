@@ -74,7 +74,7 @@ a {
 
 .bg-pink {
   color: #ffffff !important;
-  background-color: #dc3545  !important;
+  background-color: #4CAF50 !important;
 }
 
 .bg-rgba5 {
@@ -92,7 +92,7 @@ a {
 
 .bg-purple {
   color: #ffffff !important;
-  background-color: #a5215e !important;
+  background-color: #2e7c30  !important;
 }
 
 .c-yellow {
@@ -479,4 +479,8 @@ a {
   display: flex;
   height: 42px;
   align-items: center;
+}
+
+.btn-default-pink-fill {
+    background-color: #4CAF50 !important;
 }

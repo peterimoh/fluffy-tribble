@@ -12,3 +12,9 @@ export const ACTIVATE_ACCOUNT_FAIL = 'ACTIVATE_ACCOUNT_FAIL';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
+
+
+//plan request
+export const GET_PLAN_REQUEST = 'GET_PLAN_REQUEST';
+export const GET_PLAN_SUCCESS = 'GET_PLAN_SUCCESS';
+export const GET_PLAN_FAIL = 'GET_PLAN_FAIL';

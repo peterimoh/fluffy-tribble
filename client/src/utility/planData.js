@@ -1,6 +1,7 @@
 const plans = [
   {
     id: 1,
+    pkg: 'pkg$Starter',
     plan_name: 'Starter',
     Discount: '40% discount',
     Regular_price: 50,
@@ -15,6 +16,7 @@ const plans = [
   },
   {
     id: 2,
+    pkg: 'pkg$Business',
     plan_name: 'Business',
     Discount: '30% discount',
     Regular_price: 90,
@@ -29,6 +31,7 @@ const plans = [
   },
   {
     id: 3,
+    pkg: 'pkg$Premium',
     plan_name: 'Premium',
     Discount: '20% discount',
     Regular_price: 150,

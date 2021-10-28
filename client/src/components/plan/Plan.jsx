@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { plans } from '../../utility/planData';
 import {
   GrDomain,
@@ -27,6 +28,7 @@ const Plan = () => {
           {plans.map((x) => {
             const {
               id,
+              pkg,
               plan_name,
               Discount,
               Regular_price,
@@ -78,12 +80,12 @@ const Plan = () => {
                         <span className='period annually'>year</span>
                       </div>
                     </div>
-                    <a
-                      href='http://inebur.com/whmcs/cart.php?a=add&pid=9&carttpl=antler'
+                    <Link
+                      to={`/plans/${pkg}`}
                       className='btn btn-default-yellow-fill '
                     >
                       Buy now
-                    </a>
+                    </Link>
                   </div>
                   <ul className='list-info'>
                     <li>

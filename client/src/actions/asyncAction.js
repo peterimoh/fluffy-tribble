@@ -26,7 +26,6 @@ const createAccount = (userObj) => async (dispatch) => {
         'Content-Type': 'application/json'
       }
     });
-    // console.log(data)
     
     dispatch({
       type: CREATE_ACCOUNT_SUCCESS,

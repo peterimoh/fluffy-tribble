@@ -44,14 +44,12 @@ exports.preSignup = async (req, res) => {
               console.log(`**Email Sent**`);
             }
             // return
-          })
-        }
-        sendEmail();
-        res
-          .status(200)
-          .json({
-            msg: 'An Activation E-mail has been sent to your mail, this email will expire in 10 minutes. follow the link to activate account',
           });
+        };
+        sendEmail();
+        res.status(200).json({
+          msg: 'An Activation E-mail has been sent to your mail, this email will expire in 10 minutes. follow the link to activate account',
+        });
       } catch (err) {
         console.log(err);
       }
@@ -60,47 +58,47 @@ exports.preSignup = async (req, res) => {
 };
 
 exports.Signup = async (req, res) => {
-   const {token} = req.body
-   if (token) {
-     jwt.verify(token, config.jwtRegister,  async(err, decode)=> {
-       if (err) {
-         console.log(err);
-         return res.status(401).json({
-           error: 'Expired link. Signup again',
-         });
-       }
-       const { username, first_name, last_name, email, password } =
-         jwt.decode(token);
+  const { token } = req.body;
+  if (token) {
+    jwt.verify(token, config.jwtRegister, async (err, decode) => {
+      if (err) {
+        console.log(err);
+        return res.status(401).json({
+          error: 'Expired link. Signup again',
+        });
+      }
+      const { username, first_name, last_name, email, password } =
+        jwt.decode(token);
 
-       //create profile
-       const profile = `${config.client_url}/profile/${username}`;
+      //create profile
+      const profile = `${config.client_url}/profile/${username}`;
 
-       const hashPswd = await hashPassword(password)
+      const hashPswd = await hashPassword(password);
 
-       const NewUser = new User({
-         username,
-         first_name,
-         last_name,
-         email,
-         password: hashPswd,
-         profile
-       });
-       NewUser.save((err, user) => {
-         if (err) {
-           return res.status(401).json({
-             error: getErrorMessage(err),
-           });
-         }
-         return res.json({
-           message: 'Signup success!, now you can sign in',
-         });
-       });
-     });
-   } else {
-     return res.status(400).json({
-       error: 'Something went wrong. Try again',
-     });
-   }
+      const NewUser = new User({
+        username,
+        first_name,
+        last_name,
+        email,
+        password: hashPswd,
+        profile,
+      });
+      NewUser.save((err, user) => {
+        if (err) {
+          return res.status(401).json({
+            error: getErrorMessage(err),
+          });
+        }
+        return res.json({
+          message: 'Signup success!, now you can sign in',
+        });
+      });
+    });
+  } else {
+    return res.status(400).json({
+      error: 'Something went wrong. Try again',
+    });
+  }
 };
 
 exports.Login = async (req, res) => {
@@ -122,6 +120,7 @@ exports.Login = async (req, res) => {
     });
     res.cookie('token', token, { expiresIn: '1d' });
     const { _id, username, email } = user;
+
     return res.status(200).json({ token, user: { _id, username, email } });
   });
 };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import DropIn from 'braintree-web-drop-in-react';
-import { getClientToken } from '../../actions/planAction';
+import { getClientToken, processPayment } from '../../actions/planAction';
 
 const Paymentb = (props) => {
   const LoginAuth = useSelector((state) => state.LoginAuth);
@@ -10,10 +10,9 @@ const Paymentb = (props) => {
   const PaymentInit = useSelector((state) => state.PaymentInit);
   const dispatch = useDispatch();
 
-  const [loading, setLoading] = useState(false)
   const [clientToken, setClientToken] = useState(null);
-  const [instancee, setInstancee] = useState(null);
 
+  let instancee;
   const { tokenLoading, token } = GetToken;
   const { isAuth, response } = LoginAuth;
 
@@ -22,22 +21,23 @@ const Paymentb = (props) => {
       const { _id } = response.data.user;
       dispatch(getClientToken(_id));
     }
-    
   }, []);
 
   useEffect(() => {
     if (token) {
       const { clientToken } = token.response;
       setClientToken(clientToken);
-      setInstancee({});
     }
   }, [token]);
 
-  var amount = props.details ?  props.details.data.Sale_price : 0
-  
-  
-  console.log(clientToken);
-  
+  var amount = props.details ? props.details.data.Sale_price : 0;
+
+  useEffect(() => {
+    if (response && clientToken) {
+      const { _id } = response.data.user;
+      dispatch(getClientToken(_id, clientToken));
+    }
+  }, []);
 
   const showbtdropIn = () => {
     return (
@@ -53,38 +53,41 @@ const Paymentb = (props) => {
         ) : (
           <React.Fragment>
             <DropIn
-              onInstance={(instance) => instance}
+              onInstance={(instance) => (instancee = instance)}
               options={{
                 authorization: token ? token.response.clientToken : null,
+                googlePay: true,
+                paypal: true,
+                applePay: true,
               }}
               // preselectVaultedPaymentMethod={true}
-              // onPaymentMethodRequestable='true'
+              // onPaymentMethodRequestable={true}
             />
-            <button className='btn btn-primary' onClick={()=>onPurchase()}>Buy</button>
+            <button
+              className='btn btn-success btn-outline w-100'
+              onClick={() => onPurchase(instancee)}
+            >
+              Pay now
+            </button>
           </React.Fragment>
         )}
       </div>
     );
   };
-  
-  useEffect(() => {
-    if (response && clientToken) {
-      const { _id } = response.data.user;
-      dispatch(getClientToken(_id, clientToken))
-    }
-  }, [])
 
-  const onPurchase = () => {
-    setLoading(true)
-    let nonce
-    let getNonce = instancee.requestPaymentMethod().then(data => {
-      nonce = data.nonce
+  const onPurchase = (instancee) => {
+    let nonce;
+    let getNonce = instancee.requestPaymentMethod().then((data) => {
+      nonce = data.nonce;
       const paymentData = {
         paymentMethodNonce: nonce,
-        amount: amount
-      }
-    })
-  }
+        amount: amount,
+      };
+      dispatch(
+        processPayment(response.data.user._id, clientToken, paymentData)
+      );
+    });
+  };
 
   return (
     <div className='col'>

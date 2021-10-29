@@ -37,12 +37,14 @@ exports.processPayment = (req, res) => {
   let nonceFromTheClient = req.body.paymentMethodNonce
 
   let amountFromTheClient = req.body.amount
+  // console.log(req.body)
   gateway.transaction.sale({
     amount: amountFromTheClient,
     paymentMethodNonce: nonceFromTheClient,
     options: { submitForSettlement: true },
     
   }, (err, result) => {
+    console.log('err0r:' + err);
     if (err) return res.status(400), json({ error: err })
     console.log(result);
     return res.status(200).json(result)

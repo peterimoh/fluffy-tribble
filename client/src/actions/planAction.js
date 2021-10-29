@@ -49,13 +49,16 @@ const getClientToken = (userId) => async (dispatch) => {
   }
 };
 
-const processPayment = (userId, token, paymentInfo) => async (dispatch) => {
+const processPayment = (userId, token, paymentData) => async (dispatch) => {
   dispatch({ type: HANDLE_PAYMENT_REQUEST, payload: userId });
   try {
-    const data = axios.post(`/api/plan/payment/braintree/${userId}`, {
-      payload: userId,
-      token: token,
-    });
+    const data = axios.post(`/api/plan/payment/braintree/${userId}`,  paymentData, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }})
     dispatch({ type: HANDLE_PAYMENT_SUCCESS, token: data });
   } catch (error) {
     console.log(error);

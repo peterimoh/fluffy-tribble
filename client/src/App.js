@@ -9,13 +9,12 @@ const App = () => {
     <Router>
       <Switch>
         <Wrapper id='App--container'>
-          {/* <Nav /> */}
-          {/* <Navbar/> */}
+         
           {routes.map((x) => {
             const { id, path, component } = x;
             return <Route key={id} path={path} exact component={component} />;
           })}
-          {/* <Footer/> */}
+      
         </Wrapper>
       </Switch>
     </Router>

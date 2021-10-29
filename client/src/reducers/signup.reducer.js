@@ -17,6 +17,7 @@ const initState = {
   success: false,
   showButton: true,
   msg: '',
+  response: '',
   isAuth: false,
 };
 
@@ -63,7 +64,7 @@ const LoginReducer = (state = initState, action) => {
     case LOGIN_REQUEST:
       return { isAuth: false, loading: true };
     case LOGIN_SUCCESS:
-      return { isAuth: true, loading: false };
+      return { isAuth: true, loading: false, response: action.payload };
     case LOGIN_FAIL:
       return { isAuth: false, error: true, msg: action.payload };
 

@@ -27,6 +27,7 @@ exports.subscription__Plan = async (req, res) => {
 exports.getToken = (req, res) => {
   gateway.clientToken.generate({}, (err, response) => {
     console.log(req.params.userId)
+    
     if (err) return res.status(500).json({ error: err })
     res.status(200).json({response})
   })
@@ -43,6 +44,7 @@ exports.processPayment = (req, res) => {
     
   }, (err, result) => {
     if (err) return res.status(400), json({ error: err })
+    console.log(result);
     return res.status(200).json(result)
   })
 }

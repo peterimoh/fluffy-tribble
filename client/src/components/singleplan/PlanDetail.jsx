@@ -19,8 +19,7 @@ const PlanDetail = (props) => {
   };
 
   return (
-    <div className='top-header'>
-      <div className='container'>
+    <div className='col'>
         {showLoading()}
         {showError()}
         {details ? (
@@ -40,13 +39,13 @@ const PlanDetail = (props) => {
                           <li>Free SSL: {details.data.Free_ssl }</li>
                           <li>Duration: {details.data.Duration }</li>
                       </ul>
-                      <button className='btn btn-primary'>Buy Now</button>
+                      {/* <button className='btn btn-primary'>Buy Now</button> */}
           </>
         ) : (
           <div>Plan does not exist</div>
         )}
       </div>
-    </div>
+   
   );
 };
 

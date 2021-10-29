@@ -50,6 +50,7 @@ const Plan = () => {
                 data-to='1'
                 data-opacity='1'
                 data-translatey='-20'
+                key={id}
               >
                 <div className='wrapper price-container text-start wow animated fadeInUp fast'>
                   <div className='plans badge feat bg-pink'>{Discount}</div>

@@ -8,6 +8,7 @@ import './login.css';
 const Login = (props) => {
   const LoginAuth = useSelector((state) => state.LoginAuth);
   const { isAuth, loading, error, msg } = LoginAuth;
+  console.log(LoginAuth);
 
   const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ const Login = (props) => {
 
   useEffect(() => {
     if (isAuth === true) {
-      props.history.push('/dashboard');
+      props.history.push('/');
     }
   }, [dispatch, isAuth]);
 

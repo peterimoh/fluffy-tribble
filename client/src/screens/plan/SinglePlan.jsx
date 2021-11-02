@@ -27,7 +27,7 @@ const SinglePlan = (props) => {
         <div className='container'>
           <div className='row flex'>
             <PlanDetail loading={loading} details={plan} error={error} />
-            <Paymentb details={ plan}/>
+            <Paymentb details={plan} package={id}/>
           </div>
         </div>
       </div>

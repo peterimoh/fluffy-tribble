@@ -1,4 +1,4 @@
-const Packages = require('./packages');
+const { Packages } = require('./packages');
 
 exports.subscriptionPlans = (result) => {
   let pending = [];
@@ -11,9 +11,33 @@ exports.subscriptionPlans = (result) => {
   if (running.length) {
     for (let i = 0; i < running.length; i++) {
       let { Sale_price, Duration } =
-        Packages[running[i].package.split('-')[0]][
-          running[i].package.split('-')[1]
+        Packages[running[i].package.split('$')[0]][
+          running[i].package.split('$')[1]
         ];
+      running[i].Sale_price = Sale_price;
+      running[i].Duration = Duration;
+
+      today = new Date();
+      now =
+        today.getFullYear() +
+        '-' +
+        (today.getMonth() + 1) +
+        '-' +
+        today.getDate();
+      due_date = new Date(running[i].dueDate);
+      ExpiredDate =
+        due_date.getFullYear() +
+        '-' +
+        (due_date.getMonth() + 1) +
+        '-' +
+        due_date.getDate();
+      console.log('now===' + now);
+      console.log('expired===' + ExpiredDate);
+
+      if (ExpiredDate < now) {
+        running[i].status = 'Completed';
+      }
     }
   }
+  return { pending, running };
 };

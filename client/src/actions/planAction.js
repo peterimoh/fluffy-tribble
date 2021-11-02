@@ -30,6 +30,7 @@ const getPlan = (params) => async (dispatch) => {
   }
 };
 
+
 const getClientToken = (userId) => async (dispatch) => {
   dispatch({ type: GET_USER_TOKEN_REQUEST, payload: userId });
 
@@ -39,7 +40,6 @@ const getClientToken = (userId) => async (dispatch) => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        // Authorization: `Bearer ${token}`,
       },
     });
     dispatch({ type: GET_USER_TOKEN_SUCCESS, payload: data });
@@ -49,17 +49,24 @@ const getClientToken = (userId) => async (dispatch) => {
   }
 };
 
+
 const processPayment = (userId, token, paymentData) => async (dispatch) => {
   dispatch({ type: HANDLE_PAYMENT_REQUEST, payload: userId });
   try {
-    const data = axios.post(`/api/plan/payment/braintree/${userId}`,  paymentData, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      }})
-    dispatch({ type: HANDLE_PAYMENT_SUCCESS, token: data });
+    const {data} = axios.post(
+      `/api/plan/payment/braintree/${userId}`,
+      paymentData,
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(data);
+    dispatch({ type: HANDLE_PAYMENT_SUCCESS, payload: data });
   } catch (error) {
     console.log(error);
     dispatch({ type: HANDLE_PAYMENT_FAIL, payload: error.response });

@@ -82,6 +82,8 @@ const Paymentb = (props) => {
       const paymentData = {
         paymentMethodNonce: nonce,
         amount: amount,
+        userId: response.data.user._id,
+        package: props.package
       };
       dispatch(
         processPayment(response.data.user._id, clientToken, paymentData)

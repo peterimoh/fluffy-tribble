@@ -17,12 +17,7 @@ const initState = {
   token: '',
   tokenLoading: false,
   tokenError: false,
-};
-
-const paymentState = {
-  loading: false,
-  data: '',
-  error: false,
+  data: {},
 };
 
 const get_plan_reducer = (state = initState, action) => {
@@ -52,7 +47,7 @@ const get_token_reducer = (state = initState, action) => {
   }
 };
 
-const payment_init_reducer = (state = paymentState, action) => {
+const payment_init_reducer = (state = initState, action) => {
   switch (action.type) {
     case HANDLE_PAYMENT_REQUEST:
       return { loading: true };

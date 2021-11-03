@@ -11,6 +11,10 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  price: {
+    type: Number,
+    required: true,
+  },
   CPU: {
     type: String,
     required: true,
@@ -35,7 +39,10 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  thumb: {
+    type: String,
+    default: '',
+  },
 });
 
-
-module.exports = mongoose.model('Product', planSchema);
+module.exports = mongoose.model('Product', productSchema);

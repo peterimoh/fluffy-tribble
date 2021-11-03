@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const fs = require('fs');
 const config = require('./config')
 
 exports.connectDB = async () => {
@@ -12,4 +13,16 @@ exports.connectDB = async () => {
         console.log(error.message);
         process.exit(1)
     }
+}
+
+exports.createDir=(dirPath)=> {
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true }, (err) => {
+      if (err) {
+        console.error('createDir Error:', err);
+      } else {
+        console.log('Directory is made!');
+      }
+    });
+  }
 }

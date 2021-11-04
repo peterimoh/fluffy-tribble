@@ -45,7 +45,7 @@ exports.CreateProduct = async (req, res) => {
 
   if (!req.body || !req.file)
     return res.status(400).json({ error: 'Fill in missing field' });
-  const productLink = `${host}/${req.file.path}`;
+  const productLink = `${req.file.path}`;
   const { name, category, price, cpu, ram, raid, speed, ip, storage } =
     req.body;
 

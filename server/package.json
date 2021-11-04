@@ -34,5 +34,8 @@
     "nodemailer": "^6.7.0",
     "nodemon": "^2.0.14",
     "shortid": "^2.2.16"
+  },
+  "engines": {
+    "node": "14.17.6"
   }
 }

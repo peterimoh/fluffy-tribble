@@ -75,7 +75,7 @@ exports.CreateProduct = async (req, res) => {
 exports.ListProduct = async (req, res) => {
   try {
     const response = await Product.find();
-    console.log(response);
+    // console.log(response);
     return res.status(200).json(response);
   } catch (error) {
     console.log(error);

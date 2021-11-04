@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from '../../actions/asyncAction';
+import Navbar from '../../utility/navbar/Navbar';
+import Footerr from '../../utility/footer/Footerr';
 // import './activate.css';
 
 const Activate = (props) => {
@@ -22,7 +24,6 @@ const Activate = (props) => {
     profile: '',
   });
 
-  
   const { username, first_name, last_name, token, password, email } = value;
 
   useEffect(() => {
@@ -52,31 +53,40 @@ const Activate = (props) => {
   };
 
   return (
-    <Wrapper>
-      <div className='container'>
-        {success ? (
-          <center>
-            <div style={{ color: 'green', height: '30vh' }}>{msg}</div>
-          </center>
-        ) : null}
-        {error ? (
-          <center>
-            <div style={{ color: 'red', height: '30vh' }}>{error}</div>
-          </center>
-        ) : null}
-        {showButton ? (
-          <form>
-            <input type='text' hidden name='token' value={token} />
+    <React.Fragment>
+      <Navbar />
+      <br />
+      <Wrapper>
+        <div className='container m-5 pt-5'>
+          {success ? (
+            <center>
+              <div style={{ color: 'green', height: '30vh' }}>{msg}</div>
+            </center>
+          ) : null}
+          {error ? (
+            <center>
+              <div style={{ color: 'red', height: '30vh' }}>{error}</div>
+            </center>
+          ) : null}
+          {showButton ? (
+            <form>
+              <input type='text' hidden name='token' value={token} />
 
-            <h3>Hey {username}, ready to activate your account?</h3>
-            <br />
-            <button className='btn' onClick={handleSubmit} type='submit'>
-              Activate Account
-            </button>
-          </form>
-        ) : null}
-      </div>
-    </Wrapper>
+              <h3>Hey {username}, ready to activate your account?</h3>
+              <br />
+              <button
+                className='btn btn-success'
+                onClick={handleSubmit}
+                type='submit'
+              >
+                Activate account
+              </button>
+            </form>
+          ) : null}
+        </div>
+      </Wrapper>
+      <Footerr />
+    </React.Fragment>
   );
 };
 

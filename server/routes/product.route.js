@@ -6,5 +6,6 @@ const router = express.Router()
 
 router.post('/add-product', upload.single('thumb'), Product.CreateProduct)
 router.get('/get-product', Product.ListProduct)
+router.get('/get-product/:id', Product.SingleProduct)
 
 module.exports = router

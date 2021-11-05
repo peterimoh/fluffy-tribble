@@ -9,7 +9,9 @@ import './navbar.css';
 
 const Navbar = () => {
   const LoginAuth = useSelector((state) => state.LoginAuth);
+  const cart = useSelector((state) => state.cart);
   const { isAuth } = LoginAuth;
+  const {cartItem} = cart
   const [classs, setClasss] = useState(false);
 
   return (
@@ -96,7 +98,7 @@ const Navbar = () => {
                         </Link>
                       )}
                       <Link className='pe-0 me-0 m-4' to='/cart'>
-                        Cart <span className='badge bg-pink'>1</span>
+                        Cart <span className='badge bg-pink'>{cartItem.length }</span>
                       </Link>
                     </li>
                   </ul>

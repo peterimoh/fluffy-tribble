@@ -32,9 +32,9 @@ const Cart = () => {
     <React.Fragment>
       <Navbar />
       {cartItem.length > 0 ? (
-        <section className='top-header'>
+        <section className='top-header container'>
           <TableContainer>
-            <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+            <Table sx={{ minWidth: 550 }} aria-label='simple table'>
               <TableHead>
                 <TableRow>
                   <TableCell align='center'></TableCell>
@@ -90,7 +90,7 @@ const Cart = () => {
                             remove
                           </button>
                           <button
-                            onClick={() => removeHandler(product)}
+                            // onClick={() => removeHandler(product)}
                             className='btn btn-primary m-2'
                             style={{
                               border: '0',

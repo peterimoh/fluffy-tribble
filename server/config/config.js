@@ -9,7 +9,7 @@ const config = {
     process.env.MONGODB_URI,
   email: process.env.EMAIL || 'alivps39@gmail.com',
   pass: process.env.PASS || 'Alibackendmailer22',
-  client_url: process.env.CLIENT_URL || 'http://localhost:3000',
+  client_url: process.env.CLIENT_URL || 'https://pure-bayou-81849.herokuapp.com/',
   //braintree
   merchantId: process.env.MERCHANT_ID,
   publicKey: process.env.PUBLIC_KEY,

@@ -17,20 +17,28 @@ const Control = () => {
                   <h4>Choose Server</h4>
                   <ul class="radio-group radios-filter cd-filter-content list">
                     <li>
-                      <input value="all" type="radio" name="radioButton" id="radio1" checked/>
-                      <label class="radio-label" for="radio1">All Servers</label>
+                      <button value="all" type="radio" name="radioButton" id="radio1" checked>
+                      All
+                        </button>
+                      {/* <label class="radio-label" for="radio1"> </label> */}
                     </li>
                     <li>
-                      <input value=".linux" type="radio" name="radioButton" id="radio2"/>
-                      <label class="radio-label" for="radio2">Linux</label>
+                      <button value=".linux" type="radio" name="radioButton" id="radio2">
+                        Linux
+                        </button>
+                      {/* <label class="radio-label" for="radio2"></label> */}
                     </li>
                     <li>
-                      <input value=".windows" type="radio" name="radioButton" id="radio3"/>
-                      <label class="radio-label" for="radio3">Windows</label>
+                      <button value=".windows" type="radio" name="radioButton" id="radio3">
+                        Windows
+                        </button>
+                      {/* <label class="radio-label" for="radio3"></label> */}
                     </li>
                     <li>
-                      <input value=".managed" type="radio" name="radioButton" id="radio4"/>
-                      <label class="radio-label" for="radio4">Managed</label>
+                      <button value=".managed" type="radio" name="radioButton" id="radio4">
+                        Managed
+                        </button>
+                      {/* <label class="radio-label" for="radio4"></label> */}
                     </li>
                   </ul>
                 </div>
@@ -57,28 +65,40 @@ const Control = () => {
                   <h4>CPU Cores</h4>
                   <ul class="cd-filter-content cd-filters list">
                     <li>
-                      <input class="filter" value=".cores2" type="checkbox" id="checkbox1"/>
-                      <label class="checkbox-label" for="checkbox1">2</label>
+                      <button class="filter" value=".cores2" type="checkbox" id="checkbox1">
+                        2
+                        </button>
+                      {/* <label class="checkbox-label" for="checkbox1">2</label> */}
                     </li>
                     <li>
-                      <input class="filter" value=".cores4" type="checkbox" id="checkbox2"/>
-                      <label class="checkbox-label" for="checkbox2">4</label>
+                      <button class="filter" value=".cores4" type="checkbox" id="checkbox2">
+                        4
+                        </button>
+                      {/* <label class="checkbox-label" for="checkbox2">4</label> */}
                     </li>
                     <li>
-                      <input class="filter" value=".cores6" type="checkbox" id="checkbox3"/>
-                      <label class="checkbox-label" for="checkbox3">6</label>
+                      <button class="filter" value=".cores6" type="checkbox" id="checkbox3">
+                        6
+                        </button>
+                      {/* <label class="checkbox-label" for="checkbox3">6</label> */}
                     </li>
                     <li>
-                      <input class="filter" value=".cores8" type="checkbox" id="checkbox4"/>
-                      <label class="checkbox-label" for="checkbox4">8</label>
+                      <button class="filter" value=".cores8" type="checkbox" id="checkbox4">
+                        8
+                        </button>
+                      {/* <label class="checkbox-label" for="checkbox4">8</label> */}
                     </li>
                     <li>
-                      <input class="filter" value=".cores12" type="checkbox" id="checkbox5"/>
-                      <label class="checkbox-label" for="checkbox5">12</label>
+                      <button class="filter" value=".cores12" type="checkbox" id="checkbox5">
+                        12
+                        </button>
+                      {/* <label class="checkbox-label" for="checkbox5">12</label> */}
                     </li>
                     <li>
-                      <input class="filter" value=".cores16" type="checkbox" id="checkbox6"/>
-                      <label class="checkbox-label" for="checkbox6">16</label>
+                      <button class="filter" value=".cores16" type="checkbox" id="checkbox6">
+                        16
+                        </button>
+                      {/* <label class="checkbox-label" for="checkbox6">16</label> */}
                     </li>
                   </ul>
                 </div>

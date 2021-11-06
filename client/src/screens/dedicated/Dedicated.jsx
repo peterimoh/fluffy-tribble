@@ -10,7 +10,7 @@ const Dedicated = () => {
     <React.Fragment>
       <Navbar />
       <Banner />
-      <Control />
+      {/* <Control /> */}
       <Product/>
       <Footerr />
     </React.Fragment>

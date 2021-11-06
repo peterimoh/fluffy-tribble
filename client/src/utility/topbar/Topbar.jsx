@@ -28,13 +28,14 @@ const Topbar = () => {
             </div>
             <div className='col-md-6 link'>
               <div className='infonews-nav float-end'>
-                <Link to='/contact'>Support</Link>
+                <Link to='/support'>Support</Link>
                 {isAuth ? (
                   <Link to='/dashboard'>DashBoard</Link>
                 ) : (
                   <Link to='/login'>DashBoard</Link>
                 )}
-                <Link to='tel:#'>+ (123) 1300-656-1046</Link>
+                <Link to='tel:#'>+ (440) 7983-573-457</Link>
+                <Link to='tel:#'>+ (201) 069-555-516</Link>
               </div>
             </div>
           </div>

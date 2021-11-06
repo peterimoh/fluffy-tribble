@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import $ from 'jquery';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,9 +16,15 @@ const Cart = () => {
   const { id } = useParams();
 
   const cart = useSelector((state) => state.cart);
+  const loginAuth = useSelector((state) => state.LoginAuth);
   const dispatch = useDispatch();
 
   const { cartItem } = cart;
+  const { isAuth } = loginAuth;
+
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus');
+  });
 
   const removeHandler = (id) => {
     dispatch(removeFromCart(id));
@@ -48,8 +55,6 @@ const Cart = () => {
                   <TableCell align='center'>
                     <strong>Action</strong>
                   </TableCell>
-
-                  {/* <TableCell align='center'></TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -89,15 +94,27 @@ const Cart = () => {
                           >
                             remove
                           </button>
-                          <button
-                            // onClick={() => removeHandler(product)}
-                            className='btn btn-primary m-2'
-                            style={{
-                              border: '0',
-                            }}
-                          >
-                            Buy now
-                          </button>
+                          {isAuth ? (
+                            <button
+                              // onClick={() => removeHandler(product)}
+                              className='btn btn-primary m-2'
+                              style={{
+                                border: '0',
+                              }}
+                            >
+                              Buy now
+                            </button>
+                          ) : (
+                            <button
+                              className='btn btn-secondary m-2'
+                              disabled
+                              style={{
+                                border: '0',
+                              }}
+                            >
+                              Log in to pay
+                            </button>
+                          )}
                         </TableCell>
                       </TableRow>
                     );
@@ -107,8 +124,8 @@ const Cart = () => {
           </TableContainer>
         </section>
       ) : (
-        <div>
-          <center>No Product Found</center>
+        <div className='top-header'>
+          <center>Cart is Empty</center>
         </div>
       )}
 

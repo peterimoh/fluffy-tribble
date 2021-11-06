@@ -59,23 +59,23 @@ const Navbar = () => {
                       <div className='badge bg-pink me-4'>NEW</div>
                     </li>
                     <li className='menu-item menu-item-has-children'>
-                      <a
+                      <Link
                         className='v-stroke'
-                        href='#'
+                        to='/reseller'
                         data-i18n='[html]header.pages'
                       >
                         Reseller{' '}
-                      </a>
+                      </Link>
                     </li>
                     <li className='menu-item'>
                       {/* menu-item-has-children */}
-                      <a
+                      <Link
                         className='v-stroke'
-                        href='#'
+                        to='/support'
                         data-i18n='[html]header.features'
                       >
                         Support
-                      </a>
+                      </Link>
                     </li>
                     <li className='menu-item  mb-3'>
                       {isAuth ? (

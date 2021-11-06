@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,7 +18,6 @@ export const Product = () => {
     dispatch(getProduct());
   }, []);
   const host = 'http://127.0.0.1:8080/';
-  console.log(products);
 
   return (
     <section id='product-list'>
@@ -98,7 +97,7 @@ export const Product = () => {
                             className='btn btn-primary'
                             style={{ background: '#000', border: '0' }}
                           >
-                           Configure
+                            Configure
                           </Link>
                         </TableCell>
                       </TableRow>

@@ -1,0 +1,32 @@
+
+
+#support .info--header{
+    font-weight: 600;
+}
+
+#support .info--text{
+    font-size: calc(17.47368px + .52632vw);
+}
+
+#support .call-btn{
+    font-size: 1.2rem;
+}
+
+#support .flex-direct{
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#support .svg{
+    fill: #000;
+    height: 50px;
+    width: 50px;
+    align-items: flex-start;
+}
+
+@media (max-width: 420px) {
+  #support .custom-flex {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}

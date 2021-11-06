@@ -13,7 +13,6 @@ const SingleProduct = (props) => {
   const [redirect, setRedirect] = useState(false)
 
   const { id } = props.match.params;
-  console.log(id);
 
   useEffect(() => {
     dispatch(getSingleProduct(id));

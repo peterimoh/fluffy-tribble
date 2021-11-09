@@ -11,6 +11,7 @@ import './generalStyle.css'
 import './responsive.css'
 import './sections.css'
 import './buttons.css'
+import './mixitup.css'
 
 // const userInfo = Cookie.get('userInfo');
 const initialState = {};

@@ -11,7 +11,7 @@ import {
 const getProduct = () => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_REQUEST });
   try {
-    const { data } = await axios.get('https://pure-bayou-81849.herokuapp.com/product/get-product', {
+    const { data } = await axios.get('/product/get-product', {
       method: 'GET',
       headers: {
         Accept: 'application/json',

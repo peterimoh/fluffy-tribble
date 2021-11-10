@@ -8,6 +8,8 @@ const {
   HANDLE_PAYMENT_REQUEST,
   HANDLE_PAYMENT_SUCCESS,
   HANDLE_PAYMENT_FAIL,
+  COUNT_FETCH,
+  COUNT_FETCH_FAIL,
 } = require('../actions/action.types');
 
 const initState = {
@@ -18,6 +20,7 @@ const initState = {
   tokenLoading: false,
   tokenError: false,
   data: {},
+  countData: {},
 };
 
 const get_plan_reducer = (state = initState, action) => {
@@ -60,4 +63,21 @@ const payment_init_reducer = (state = initState, action) => {
   }
 };
 
-export { get_plan_reducer, get_token_reducer, payment_init_reducer };
+const getPlanCount_reducer = (state = initState, action) => {
+  switch (action.type) {
+    case COUNT_FETCH:
+      return { countData: action.payload }
+    case COUNT_FETCH_FAIL:
+      return {error: action.payload}
+  
+    default:
+      return state;
+  }
+}
+
+export {
+  get_plan_reducer,
+  get_token_reducer,
+  payment_init_reducer,
+  getPlanCount_reducer,
+};

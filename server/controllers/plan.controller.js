@@ -57,8 +57,9 @@ exports.processPayment = async (req, res) => {
           let duration = parseInt(
             Packages[Package.split('$')[0]][
               Package.split('$')[1]
-            ].Duration.split(' ')[0]
+            ].Duration.split('$')[0]
           );
+
           let deposit_date = new Date();
           let now = new Date();
           let due_date_converter = now.setTime(
@@ -74,9 +75,8 @@ exports.processPayment = async (req, res) => {
             user_id: userID,
           });
           newPlan.save((err, res) => {
-            if (err)
-              return res.status(401).json({ error: getErrorMessage(err) });
-            return res.status(200).json({ message: 'Plan bought successfully' });
+            if (err) return console.log(err);
+            // return res.status(200).json({ message: 'Plan bought successfully' });
           });
         } else {
           const newPlan = new Plan({
@@ -94,7 +94,7 @@ exports.processPayment = async (req, res) => {
               });
             } else {
               return res.status(200).json({
-                message: 'Plan bought successfully',
+                message: 'Error Purchasing Plan',
               });
             }
           });
@@ -102,4 +102,21 @@ exports.processPayment = async (req, res) => {
       }
     }
   );
+};
+
+exports.GetPlan = async (req, res) => {
+  let pending = [];
+  let running = [];
+  let userID = req.params.userId;
+  Plan.find({ user_id: userID }, (err, plan) => {
+    if (err) return res.status(400).json({ error: err });
+    if (plan) {
+      for (var obj of plan) {
+        obj.status == 'pending' ? pending.push(obj) : running.push(obj);
+      }
+      let runningCounter = running.length;
+      let pendingCounter = pending.length;
+      return res.status(200).json({ msg: 'SUCCESS ', runningCounter, pendingCounter });
+    }
+  });
 };

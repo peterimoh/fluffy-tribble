@@ -27,7 +27,8 @@ const routes = [
   { id: 9, path: '/cloud', component: Cloud },
   { id: 10, path: '/reseller', component: Reseller },
   { id: 11, path: '/support', component: Support },
-  { id: 12, path: '/dashboard', component: Dashboard },
+  { id: 12, path: '/dashboard/:id', component: Dashboard },
 ];
 
 export default routes;
+

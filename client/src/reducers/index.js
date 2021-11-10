@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { cart_reducer } from './cart.reducer';
 import {
+  getPlanCount_reducer,
   get_plan_reducer,
   get_token_reducer,
   payment_init_reducer,
@@ -20,4 +21,5 @@ export default combineReducers({
   productDetail: get_single_product_reducer,
   cart: cart_reducer,
   sidebar: sidebar_reducer,
+  counter: getPlanCount_reducer,
 });

@@ -45,3 +45,7 @@ export const GET_SINGLE_PRODUCT_FAIL = 'GET_SINGLE_PRODUCT_FAIL';
 // cart types
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+
+// plan counter
+export const COUNT_FETCH = 'COUNT_FETCH';
+export const COUNT_FETCH_FAIL = 'COUNT_FETCH_FAIL';

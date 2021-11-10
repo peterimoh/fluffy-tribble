@@ -1,4 +1,6 @@
 import {
+  COUNT_FETCH,
+  COUNT_FETCH_FAIL,
   GET_PLAN_FAIL,
   GET_PLAN_REQUEST,
   GET_PLAN_SUCCESS,
@@ -30,7 +32,6 @@ const getPlan = (params) => async (dispatch) => {
   }
 };
 
-
 const getClientToken = (userId) => async (dispatch) => {
   dispatch({ type: GET_USER_TOKEN_REQUEST, payload: userId });
 
@@ -49,11 +50,10 @@ const getClientToken = (userId) => async (dispatch) => {
   }
 };
 
-
 const processPayment = (userId, token, paymentData) => async (dispatch) => {
   dispatch({ type: HANDLE_PAYMENT_REQUEST, payload: userId });
   try {
-    const {data} = axios.post(
+    const { data } = axios.post(
       `/api/plan/payment/braintree/${userId}`,
       paymentData,
       {
@@ -73,4 +73,19 @@ const processPayment = (userId, token, paymentData) => async (dispatch) => {
   }
 };
 
-export { getPlan, getClientToken, processPayment };
+const planCounter = (userId) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(`/api/plan/getplan/${userId}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    dispatch({type: COUNT_FETCH, payload: data})
+  } catch (error) {
+    dispatch({type: COUNT_FETCH_FAIL, payload: error.response})
+  }
+};
+
+export { getPlan, getClientToken, processPayment, planCounter };

@@ -10,9 +10,12 @@ import './navbar.css';
 const Navbar = () => {
   const LoginAuth = useSelector((state) => state.LoginAuth);
   const cart = useSelector((state) => state.cart);
-  const { isAuth } = LoginAuth;
+  const { isAuth, response } = LoginAuth;
   const {cartItem} = cart
   const [classs, setClasss] = useState(false);
+
+ 
+  // if (response) { const { user } = response.data }
 
   return (
     <header id='header'>
@@ -79,7 +82,7 @@ const Navbar = () => {
                     </li>
                     <li className='menu-item  mb-3'>
                       {isAuth ? (
-                        <Link className='pe-0 me-0 ' to='/dashboard'>
+                        <Link className='pe-0 me-0 ' to={response && `/dashboard/${response.data.user._id}`}>
                           <div className='btn btn-default-yellow-fill question mb-3'>
                             <span data-i18n='[html]header.login'>
                               Client Area
@@ -98,7 +101,8 @@ const Navbar = () => {
                         </Link>
                       )}
                       <Link className='pe-0 me-0 m-4' to='/cart'>
-                        Cart <span className='badge bg-pink'>{cartItem.length }</span>
+                        Cart{' '}
+                        <span className='badge bg-pink'>{cartItem.length}</span>
                       </Link>
                     </li>
                   </ul>

@@ -2,10 +2,9 @@ import React from 'react';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './topbar.css'
+import './topbar.css';
 
-
-const Topbar = () => {
+const Topbar = ({ response }) => {
   const LoginAuth = useSelector((state) => state.LoginAuth);
   const { isAuth } = LoginAuth;
   return (
@@ -20,7 +19,10 @@ const Topbar = () => {
                 </div>
                 <small className='text-light'>
                   Welcome to the renewed Worldstream.
-                  <Link className='c-yellow' to='/dashboard'>
+                  <Link
+                    className='c-yellow'
+                    to={response && `/dashboard/${response.data.user._id}`}
+                  >
                     Configure your server now <BiRightArrowAlt className='' />
                   </Link>
                 </small>
@@ -30,7 +32,9 @@ const Topbar = () => {
               <div className='infonews-nav float-end'>
                 <Link to='/support'>Support</Link>
                 {isAuth ? (
-                  <Link to='/dashboard'>DashBoard</Link>
+                  <Link to={response && `/dashboard/${response.data.user._id}`}>
+                    DashBoard
+                  </Link>
                 ) : (
                   <Link to='/login'>DashBoard</Link>
                 )}

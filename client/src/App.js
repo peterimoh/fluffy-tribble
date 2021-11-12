@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Styled from 'styled-components';
-import routes from './route';
+import { routes, privateRoutes } from './route';
+import PrivateRoute from './screens/dashboard/PrivateRoute';
 
 
 const App = () => {
@@ -9,12 +10,15 @@ const App = () => {
     <Router>
       <Switch>
         <Wrapper id='App--container'>
-         
           {routes.map((x) => {
             const { id, path, component } = x;
             return <Route key={id} path={path} exact component={component} />;
           })}
-      
+
+          {privateRoutes.map((x) => {
+            const { id, path, component } = x;
+            return <PrivateRoute path={path} exact component={component} key={id}/>;
+          })}
         </Wrapper>
       </Switch>
     </Router>

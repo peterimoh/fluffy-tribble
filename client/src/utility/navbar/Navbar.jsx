@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <header id='header'>
-      <Topbar />
+      <Topbar response={response&&response} />
       {/* <!-- ***** NAV MENU DESKTOP ****** --> */}
       <div className={classs ? 'menu-wrap fixed sticky' : 'menu-wrap'}>
         <div className='nav-menu'>

@@ -59,9 +59,8 @@ const Paymentb = (props) => {
                 googlePay: true,
                 paypal: true,
                 applePay: true,
+                // card: true,
               }}
-              // preselectVaultedPaymentMethod={true}
-              // onPaymentMethodRequestable={true}
             />
             <button
               className='btn btn-success btn-outline w-100'
@@ -83,7 +82,7 @@ const Paymentb = (props) => {
         paymentMethodNonce: nonce,
         amount: amount,
         userId: response.data.user._id,
-        package: props.package
+        package: props.package,
       };
       dispatch(
         processPayment(response.data.user._id, clientToken, paymentData)

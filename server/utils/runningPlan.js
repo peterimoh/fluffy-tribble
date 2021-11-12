@@ -1,3 +1,4 @@
+const moment = require('moment')
 const { Packages } = require('./packages');
 
 exports.subscriptionPlans = (result) => {
@@ -11,8 +12,8 @@ exports.subscriptionPlans = (result) => {
   if (running.length) {
     for (let i = 0; i < running.length; i++) {
       let { Sale_price, Duration } =
-        Packages[running[i].package.split('$')[0]][
-          running[i].package.split('$')[1]
+        Packages[running[i].plan.split('$')[0]][
+          running[i].plan.split('$')[1]
         ];
       running[i].Sale_price = Sale_price;
       running[i].Duration = Duration;

@@ -1,47 +1,46 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+
 import './counter.css';
 
-const Counter = ({response}) => {
-
+const Counter = ({ response }) => {
   return (
     <>
-      <div class='col-xxl-4 col-md-6'>
-        <div class='card info-card sales-card'>
-          <div class='card-body'>
-            <h5 class='card-title'>
+      <div className='col-xxl-4 col-md-6'>
+        <div className='card info-card sales-card'>
+          <div className='card-body'>
+            <h5 className='card-title'>
               Running <span>| Plans</span>
             </h5>
 
-            <div class='d-flex align-items-center'>
-              <div class='card-icon rounded-circle d-flex align-items-center justify-content-center'>
-                <i class='bi bi-cart'></i>
+            <div className='d-flex align-items-center'>
+              <div className='card-icon rounded-circle d-flex align-items-center justify-content-center'>
+                <i className='bi bi-cart'></i>
               </div>
-              <div class='ps-3'>
-                              <h6>{ response && response.runningCounter}</h6>
-                {/* <span class='text-success small pt-1 fw-bold'>12%</span>{' '} */}
-                <span class='text-muted small pt-2 ps-1'>counts</span>
+              <div className='ps-3'>
+                <h6>{response && response.runningCounter}</h6>
+
+                <span className='text-muted small pt-2 ps-1'>counts</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
-      <div class='col-xxl-4 col-md-6'>
-        <div class='card info-card revenue-card'>
-          <div class='card-body'>
-            <h5 class='card-title'>
+
+      <div className='col-xxl-4 col-md-6'>
+        <div className='card info-card revenue-card'>
+          <div className='card-body'>
+            <h5 className='card-title'>
               Pending <span>| Plan</span>
             </h5>
 
-            <div class='d-flex align-items-center'>
-              <div class='card-icon rounded-circle d-flex align-items-center justify-content-center'>
-                <i class='bi bi-currency-dollar'></i>
+            <div className='d-flex align-items-center'>
+              <div className='card-icon rounded-circle d-flex align-items-center justify-content-center'>
+                <i className='bi bi-currency-dollar'></i>
               </div>
-              <div class='ps-3'>
-                              <h6>{ response && response.pendingCounter}</h6>
-                {/* <span class='text-success small pt-1 fw-bold'>8%</span>{' '} */}
-                <span class='text-muted small pt-2 ps-1'>count</span>
+              <div className='ps-3'>
+                <h6>{response && response.pendingCounter}</h6>
+
+                <span className='text-muted small pt-2 ps-1'>count</span>
               </div>
             </div>
           </div>

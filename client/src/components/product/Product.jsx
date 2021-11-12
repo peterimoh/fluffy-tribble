@@ -252,12 +252,13 @@ export const Product = () => {
                             , Speed: {speed}
                           </TableCell>
                           <TableCell align='center'>
-                            <button
+                            <Link
+                              to={`/product/${_id}`}
                               className='btn btn-primary'
                               style={{ background: '#000', border: '0' }}
                             >
                               Configure
-                            </button>
+                            </Link>
                           </TableCell>
                         </TableRow>
                       );
@@ -278,63 +279,3 @@ export const Product = () => {
     </>
   );
 };
-
-var prod = [
-  {
-    _id: '61845cc4f8f2480af1665ec4',
-    name: 'vps 4',
-    category: 'cloud',
-    price: 600,
-    CPU: '16 GHZ',
-    RAM: '32gb',
-    Raid: 'hardware 3',
-    IP: 'Geolocate',
-    storage: '128 ssd',
-    speed: 'unmetered',
-    thumb:
-      'public/api/static/productImg/1636064452405-bill-wegener-LqOO5Ko0zSo-unsplash.jpg',
-    __v: 0,
-  },
-  {
-    _id: '61845d1ef8f2480af1665ec6',
-    name: 'vps 1',
-    category: 'dedicated',
-    price: 1500,
-    CPU: '34 GHZ',
-    RAM: '128gb',
-    Raid: 'hardware 4',
-    IP: 'Geolocate',
-    storage: '128 ssd',
-    speed: 'unmetered',
-    thumb: 'public/api/static/productImg/1636064542638-zlidee.com_.png',
-    __v: 0,
-  },
-  {
-    _id: '61845ed8f8f2480af1665ec8',
-    name: 'Toshiba',
-    category: 'reseller',
-    price: 430,
-    CPU: '56 GHZ',
-    RAM: '13gb',
-    Raid: 'hardware 4',
-    IP: 'Geolocate',
-    storage: '128 ssd',
-    speed: 'unmetered',
-    thumb: 'public/api/static/productImg/1636064984075-zlidee.com_.png',
-    __v: 0,
-  },
-  {
-    _id: '61845f14f8f2480af1665eca',
-    name: 'Innoson',
-    category: 'reseller',
-    price: 4300,
-    CPU: '26 GHZ',
-    RAM: '1340gb',
-    Raid: 'hardware 4',
-    IP: 'Geolocate',
-    storage: '5000 ssd',
-    speed: 'unmetered',
-    thumb: 'public/api/static/productImg/1636065044509-zlidee.com_.png',
-    __v: 0,
-  },
-];

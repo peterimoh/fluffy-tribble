@@ -14,6 +14,8 @@ async function hashPassword(password) {
   return await bcrypt.hash(password, 10);
 }
 
+// 'mongodb+srv://ali_vps:cRji8gcsmvpdXqF@cluster0.z4pze.mongodb.net/vpsserve?retryWrites=true&w=majority';
+
 //compare encrpted password with password entered by user
 async function validatePassword(password, hashedPassword) {
   return await bcrypt.compare(password, hashedPassword);
@@ -103,25 +105,29 @@ exports.Signup = async (req, res) => {
 
 exports.Login = async (req, res) => {
   const { email, password } = req.body;
-  // console.log(req.body)
-  await User.findOne({ email }).exec((err, user) => {
-    if (err || !user)
-      return res.status(404).json({
-        error: 'This user does not exist',
-      });
-
-    bcrypt.compare(password, user.password, (err, result) => {
-      if (err) return res.status(400).json({ error: 'Invalid Password' });
+  const user = await User.findOne({ email: email.toLowerCase() });
+  if (!user) {
+    return res.status(400).json({
+      error: 'User with that email does not exist',
     });
+  }
 
-    //generate new token for users
-    const token = jwt.sign({ _id: user._id }, config.jwtSecret, {
-      expiresIn: '1d',
+  const isValidPassword = await validatePassword(password, user.password);
+  if (!isValidPassword) {
+    return res.status(400).json({
+      error: 'Invalid Password',
     });
-    res.cookie('token', token, { expiresIn: '1d' });
-    const { _id, username, email } = user;
+  }
 
-    return res.status(200).json({ token, user: { _id, username, email } });
+  const userProfile = user.profile;
+  const token = jwt.sign({ id: user._id }, config.jwtSecret, {
+    expiresIn: '24h',
+  });
+
+  return res.json({
+    user,
+    token,
+    profile: userProfile,
   });
 };
 
@@ -132,4 +138,48 @@ exports.SignOut = (req, res) => {
   });
 };
 
-// exports.requireSignin =
+exports.updatePassword = async (req, res) => {
+  const { password, newPassword, confirmPassword, userID } = req.body;
+
+  if (newPassword !== confirmPassword) {
+    return res.status(400).json({
+      error: 'Password do not match',
+    });
+  }
+
+  if (newPassword.length < 6 || confirmPassword.length < 6) {
+    return res.status(400).json({ error: 'Password must be up to 6 digits' });
+  }
+
+  const hashPswd = await hashPassword(newPassword);
+
+  User.findById(userID, async (err, user) => {
+    if (err)
+      return res.status(400).json({ error: 'Error occured, try again later!' });
+    console.log(user);
+    if (user) {
+      const validPass = await validatePassword(password, user.password);
+      if (!validPass) {
+        return res.status(400).json({
+          error: 'Invalid Password',
+        });
+      } else {
+        User.findByIdAndUpdate(
+          userID,
+          { password: hashPswd },
+          { new: true },
+          (err, user) => {
+            if (err) {
+              return res.status(400).json({
+                error: 'Something went wrong',
+              });
+            }
+            return res.json({
+              message: 'Password Updated Successfully',
+            });
+          }
+        );
+      }
+    }
+  });
+};

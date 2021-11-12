@@ -10,6 +10,9 @@ import {
   HANDLE_PAYMENT_FAIL,
   HANDLE_PAYMENT_REQUEST,
   HANDLE_PAYMENT_SUCCESS,
+  RUNNING_PLAN,
+  RUNNING_PLAN_FAIL,
+  RUNNING_PLAN_REQUEST,
 } from './action.types';
 import axios from 'axios';
 
@@ -87,5 +90,20 @@ const planCounter = (userId) => async (dispatch) => {
     dispatch({type: COUNT_FETCH_FAIL, payload: error.response})
   }
 };
+const runningPlan = (userId) => async (dispatch) => {
+  dispatch({ type: RUNNING_PLAN_REQUEST });
+  try {
+    const { data } = await axios.get(`/api/plan/runningplan/${userId}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    dispatch({ type: RUNNING_PLAN, payload: data });
+  } catch (error) {
+    dispatch({ type: RUNNING_PLAN_FAIL, payload: error.response });
+  }
+};
 
-export { getPlan, getClientToken, processPayment, planCounter };
+export { getPlan, getClientToken, processPayment, planCounter, runningPlan };

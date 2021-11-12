@@ -8,6 +8,9 @@ import {
   LOGIN_FAIL,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_SUCCESS,
 } from '../actions/action.types';
 
 const initState = {
@@ -28,7 +31,7 @@ const SignupReducer = (state = initState, action) => {
     case CREATE_ACCOUNT_SUCCESS:
       return { loading: false, message: true, data: action.payload };
     case CREATE_ACCOUNT_FAIL:
-        console.log(action.payload);
+      console.log(action.payload);
       return { loading: false, error: action.payload };
     default:
       return state;
@@ -73,4 +76,18 @@ const LoginReducer = (state = initState, action) => {
   }
 };
 
-export { SignupReducer, ActivateReducer, LoginReducer };
+const UpdateUser_reducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_PASSWORD_REQUEST:
+      return { loading: true };
+    case UPDATE_PASSWORD_SUCCESS:
+      return { loading: false, response: action.payload };
+    case UPDATE_PASSWORD_FAIL:
+      return { loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export { SignupReducer, ActivateReducer, LoginReducer, UpdateUser_reducer };

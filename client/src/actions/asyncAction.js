@@ -8,6 +8,9 @@ import {
   LOGIN_FAIL,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_SUCCESS,
 } from './action.types';
 import axios from 'axios';
 import Cookie from 'js-cookie';
@@ -48,7 +51,7 @@ const signUp = (user) => async (dispatch) => {
     dispatch({ type: ACTIVATE_ACCOUNT_SUCCESS, token: response });
   } catch (error) {
     dispatch({ type: ACTIVATE_ACCOUNT_FAIL, error: error.response.data.error });
-    console.log(error);
+ 
   }
 };
 
@@ -62,8 +65,19 @@ const Login = (userObj) => async (dispatch) => {
     });
   } catch (err) {
     dispatch({ type: LOGIN_FAIL, payload: err.response.data.error });
-    console.log(err);
+  
   }
 };
 
-export { createAccount, signUp, Login };
+const updateUser = (userObj) => async (dispatch) => {
+  dispatch({ type: UPDATE_PASSWORD_REQUEST, payload: userObj })
+  try {
+    const data = await axios.post('/api/resetpassword', userObj);
+    dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data });
+  } catch (err) {
+    dispatch({ type: UPDATE_PASSWORD_FAIL, payload: err.response.data.error });
+    
+  }
+}
+
+export { createAccount, signUp, Login, updateUser };

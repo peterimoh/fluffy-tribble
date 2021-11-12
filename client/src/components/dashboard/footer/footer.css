@@ -1,0 +1,31 @@
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footerr {
+  padding: 20px 0;
+  font-size: 14px;
+  transition: all 0.3s;
+  border-top: 1px solid #cddfff;
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  bottom: 0;
+  background: transparent !important;
+}
+#footerr  .copyright {
+  text-align: center;
+  color: #012970;
+}
+#footerr  .credits {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 13px;
+  color: #012970;
+}
+
+@media (min-width: 1200px) {
+  #main
+ {
+    margin-left: 300px;
+  }
+}

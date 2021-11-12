@@ -10,6 +10,9 @@ const {
   HANDLE_PAYMENT_FAIL,
   COUNT_FETCH,
   COUNT_FETCH_FAIL,
+  RUNNING_PLAN,
+  RUNNING_PLAN_FAIL,
+  RUNNING_PLAN_REQUEST,
 } = require('../actions/action.types');
 
 const initState = {
@@ -21,6 +24,7 @@ const initState = {
   tokenError: false,
   data: {},
   countData: {},
+  plans: null
 };
 
 const get_plan_reducer = (state = initState, action) => {
@@ -75,9 +79,24 @@ const getPlanCount_reducer = (state = initState, action) => {
   }
 }
 
+const running_plan_reducer = (state = initState, action) => {
+  switch (action.type) {
+    case RUNNING_PLAN_REQUEST:
+      return{loading: true}
+    case RUNNING_PLAN:
+      return {loading: false, plans: action.payload}
+    case RUNNING_PLAN_FAIL:
+      return {error: action.payload}
+  
+    default:
+      return state
+  }
+}
+
 export {
   get_plan_reducer,
   get_token_reducer,
   payment_init_reducer,
   getPlanCount_reducer,
+  running_plan_reducer,
 };

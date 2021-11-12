@@ -16,5 +16,6 @@ router.post(
 
 router.post('/signup-redirect', auth.Signup)
 router.post('/login', userSigninValidator, runValidation, auth.Login)
+router.post('/resetpassword', auth.updatePassword);
 
 module.exports = router;

@@ -8,7 +8,6 @@ import './login.css';
 const Login = (props) => {
   const LoginAuth = useSelector((state) => state.LoginAuth);
   const { isAuth, loading, error, msg } = LoginAuth;
-  console.log(LoginAuth);
 
   const dispatch = useDispatch();
 
@@ -68,7 +67,7 @@ const Login = (props) => {
 
                       <form
                         className='row g-3 needs-validation'
-                        novalidate
+                        noValidate
                         onSubmit={handleSubmit}
                       >
                         <div className='col-12'>
@@ -114,13 +113,19 @@ const Login = (props) => {
                               value='true'
                               id='rememberMe'
                             />
-                            <label className='form-check-label' htmlFor='rememberMe'>
+                            <label
+                              className='form-check-label'
+                              htmlFor='rememberMe'
+                            >
                               Remember me
                             </label>
                           </div>
                         </div>
                         <div className='col-12'>
-                          <button className='btn btn-primary w-100' type='submit'>
+                          <button
+                            className='btn btn-primary w-100'
+                            type='submit'
+                          >
                             Login
                           </button>
                         </div>

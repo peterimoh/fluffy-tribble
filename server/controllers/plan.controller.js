@@ -1,6 +1,7 @@
 const braintree = require('braintree');
-const { Packages } = require('../utils/packages');
+const moment = require('moment')
 const Plan = require('../models/plan.model');
+const { Packages } = require('../utils/packages');
 const { subscriptionPlans } = require('../utils/runningPlan');
 const config = require('../config/config');
 const { getErrorMessage } = require('../helper/dbErrorHandler');
@@ -64,14 +65,17 @@ exports.processPayment = async (req, res) => {
           let now = new Date();
           let due_date_converter = now.setTime(
             now.getTime() + duration * 24 * 60 * 60 * 1000
-          );
-          let due_date = new Date(due_date_converter);
+            );
+            let due_date = new Date(due_date_converter);
+          let format_deposit_date = moment(deposit_date).format('DD-MMM-YYYY')
+          let format_due_date = moment(due_date).format('DD-MMM-YYYY')
+
           const newPlan = new Plan({
             recieptStatus: true,
             status: 'running',
             plan: Package,
-            dueDate: due_date,
-            depositDate: deposit_date,
+            dueDate: format_due_date,
+            depositDate: format_deposit_date,
             user_id: userID,
           });
           newPlan.save((err, res) => {
@@ -104,11 +108,11 @@ exports.processPayment = async (req, res) => {
   );
 };
 
-exports.GetPlan = async (req, res) => {
+exports.GetPlan =  (req, res) => {
   let pending = [];
   let running = [];
   let userID = req.params.userId;
-  Plan.find({ user_id: userID }, (err, plan) => {
+ Plan.find({ user_id: userID }, (err, plan) => {
     if (err) return res.status(400).json({ error: err });
     if (plan) {
       for (var obj of plan) {
@@ -120,3 +124,14 @@ exports.GetPlan = async (req, res) => {
     }
   });
 };
+
+exports.runningPlans = async (req, res) => {
+    let userID = req.params.userId;
+  await Plan.find({ user_id: userID }, (err, plan) => {
+    if (err) return res.status(400).json({ error: err })
+    let { running, pending } = subscriptionPlans(plan)
+    console.log(`runing======================================== ${running}==================================`);
+    // console.log(pending);
+    res.status(200).json({running, pending})
+  })
+} 

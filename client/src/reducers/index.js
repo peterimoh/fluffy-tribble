@@ -5,10 +5,16 @@ import {
   get_plan_reducer,
   get_token_reducer,
   payment_init_reducer,
+  running_plan_reducer,
 } from './plan.reducer';
 import { get_product_reducer, get_single_product_reducer } from './product.reducer';
 import { sidebar_reducer } from './sidebar.reducer';
-import { SignupReducer, ActivateReducer, LoginReducer } from './signup.reducer';
+import {
+  SignupReducer,
+  ActivateReducer,
+  LoginReducer,
+  UpdateUser_reducer,
+} from './signup.reducer';
 
 export default combineReducers({
   signupReducer: SignupReducer,
@@ -22,4 +28,6 @@ export default combineReducers({
   cart: cart_reducer,
   sidebar: sidebar_reducer,
   counter: getPlanCount_reducer,
+  RunningPlans: running_plan_reducer,
+  updatePassword: UpdateUser_reducer
 });

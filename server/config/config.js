@@ -5,11 +5,10 @@ const config = {
   port: process.env.PORT || 8080,
   jwtRegister: process.env.JWT_REGISTER || 'secretregister',
   jwtSecret: process.env.JWT_SECRET || 'secretsecret1010',
-  mongoUri:
-    process.env.MONGODB_URI,
+  mongoUri: process.env.MONGODB_URI,
   email: process.env.EMAIL || 'alivps39@gmail.com',
   pass: process.env.PASS || 'Alibackendmailer22',
-  client_url: process.env.CLIENT_URL || 'https://pure-bayou-81849.herokuapp.com/',
+  client_url: process.env.CLIENT_URL || 'http://127.0.0.1:3000',
   //braintree
   merchantId: process.env.MERCHANT_ID,
   publicKey: process.env.PUBLIC_KEY,

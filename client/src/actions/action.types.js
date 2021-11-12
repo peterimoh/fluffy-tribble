@@ -17,6 +17,11 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
+// update password
+export const UPDATE_PASSWORD_REQUEST = 'UPDATE_PASSWORD_REQUEST';
+export const UPDATE_PASSWORD_SUCCESS = 'UPDATE_PASSWORD_SUCCESS';
+export const UPDATE_PASSWORD_FAIL = 'UPDATE_PASSWORD_FAIL';
+
 //plan request
 export const GET_PLAN_REQUEST = 'GET_PLAN_REQUEST';
 export const GET_PLAN_SUCCESS = 'GET_PLAN_SUCCESS';
@@ -49,3 +54,8 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 // plan counter
 export const COUNT_FETCH = 'COUNT_FETCH';
 export const COUNT_FETCH_FAIL = 'COUNT_FETCH_FAIL';
+
+// running plan
+export const RUNNING_PLAN_REQUEST = 'RUNNING_PLAN_REQUEST';
+export const RUNNING_PLAN = 'RUNNING_PLAN';
+export const RUNNING_PLAN_FAIL = 'RUNNING_PLAN_FAIL';

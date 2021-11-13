@@ -35,7 +35,7 @@ const PlanDetail = (props) => {
                           <li>Free SSL: {details.data.Free_ssl }</li>
                           <li>Duration: {details.data.Duration }</li>
                       </ul>
-                      {/* <button className='btn btn-primary'>Buy Now</button> */}
+                     
           </>
         ) : (
           <div>Plan does not exist</div>

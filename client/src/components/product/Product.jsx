@@ -8,22 +8,19 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { getProduct } from '../../actions/productAction';
-import './filter.css'
+import './filter.css';
 
 export const Product = () => {
   const [productData, setProduct] = useState([]);
   const products = useSelector((state) => state.products);
   const { loading, data, error } = products;
 
-
   const dispatch = useDispatch();
-
 
   const filterStatus = (key, value) => {
     if (data)
       return setProduct(data.filter((element) => element[key] == value));
   };
-
 
   useEffect(() => {
     dispatch(getProduct());
@@ -32,7 +29,7 @@ export const Product = () => {
       setProduct(data);
     }
   }, []);
-    console.log(productData);
+  console.log(productData);
   const host = 'http://127.0.0.1:8080/';
 
   return (
@@ -46,7 +43,7 @@ export const Product = () => {
                 <a href='#0' class='cd-close'>
                   <i class='fas fa-long-arrow-alt-left'></i>
                 </a>
-                
+
                 {/* <div class='col-md-6'>
                   <div class='cd-filter-block'>
                     <h4>Location</h4>
@@ -68,37 +65,33 @@ export const Product = () => {
                   <div class='cd-filter-block checkbox-group'>
                     <h4>CPU Cores</h4>
                     <ul class='cd-filter-content cd-filters list'>
-                      <li>
-                       
-                      </li>
+                      <li></li>
                       <li>
                         <button
                           onClick={() => filterStatus('CPU', '4 GHZ')}
-                          className='btn btn-outline-warning'
+                          className='btn btn-outline-success'
                           value='.cores4'
                           type='checkbox'
                           id='checkbox2'
                         >
                           4
                         </button>
-                      
                       </li>
                       <li>
                         <button
                           onClick={() => filterStatus('CPU', '6 GHZ')}
-                          className='btn btn-outline-warning'
+                          className='btn btn-outline-success'
                           value='.cores6'
                           type='checkbox'
                           id='checkbox3'
                         >
                           6
                         </button>
-                        
                       </li>
                       <li>
                         <button
                           onClick={() => filterStatus('CPU', '8 GHZ')}
-                          className='btn btn-outline-warning'
+                          className='btn btn-outline-success'
                           value='.cores8'
                           type='checkbox'
                           id='checkbox4'
@@ -110,7 +103,7 @@ export const Product = () => {
                       <li>
                         <button
                           onClick={() => filterStatus('CPU', '12 GHZ')}
-                          className='btn btn-outline-warning'
+                          className='btn btn-outline-success'
                           value='.cores12'
                           type='checkbox'
                           id='checkbox5'
@@ -122,7 +115,7 @@ export const Product = () => {
                       <li>
                         <button
                           onClick={() => filterStatus('CPU', '16 GHZ')}
-                          className='btn btn-outline-warning'
+                          className='btn btn-outline-success'
                           value='.cores16'
                           type='checkbox'
                           id='checkbox6'
@@ -135,43 +128,111 @@ export const Product = () => {
                   </div>
                 </div>
                 <div class='col-md-6'>
-                  <div class='cd-filter-block'> 
+                  <div class='cd-filter-block checkbox-group'>
                     <h4>RAM</h4>
-                    <div class='cd-filter-content cd-filters list'>
-                      <datalist>
-                        <option value='0'> 16</option>
-                        <option value='1'> 32</option>
-                        <option value='2'> 64</option>
-                        <option value='3'> 96</option>
-                        <option value='4'> 128</option>
-                        <option value='5'> 256</option>
-                      </datalist>
-                      <div class='range-slider'>
-                        <input
-                          name='minSize'
-                          class='range-slider-input tooltip-parent'
-                          type='range'
-                          min='0'
-                          max='5'
-                          value='0'
-                          data-list='sizeLegend'
-                        />
-                      </div>
-                      {/* <div class='range-slider'>
-                        <input
-                          name='maxSize'
-                          class='range-slider-input tooltip-parent'
-                          type='range'
-                          min='0'
-                          max='5'
-                          value='5'
-                          data-list='sizeLegend'
-                        />
-                      </div> */}
-                    </div>
-                    {/* <div class="search-disabled">
-                    <input type="text" class="input" data-ref="input-search" placeholder="Enter a domain extension (.com)"/>
-                  </div> */}
+                    <ul class='cd-filter-content cd-filters list'>
+                      <li></li>
+                      <li>
+                        <button
+                          onClick={() => filterStatus('RAM', '5gb')}
+                          className='btn btn-outline-success'
+                          value='.cores4'
+                          type='checkbox'
+                          id='checkbox2'
+                        >
+                          5 GB
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => filterStatus('RAM', '32gb')}
+                          className='btn btn-outline-success'
+                          value='.cores6'
+                          type='checkbox'
+                          id='checkbox3'
+                        >
+                          32 GB
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => filterStatus('RAM', '64gb')}
+                          className='btn btn-outline-success'
+                          value='.cores8'
+                          type='checkbox'
+                          id='checkbox4'
+                        >
+                          64 GB
+                        </button>
+                        {/* <label class="checkbox-label" for="checkbox4">8</label> */}
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => filterStatus('RAM', '124gb')}
+                          className='btn btn-outline-success'
+                          value='.cores12'
+                          type='checkbox'
+                          id='checkbox5'
+                        >
+                          124 GB
+                        </button>
+                        {/* <label class="checkbox-label" for="checkbox5">12</label> */}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class='col-md-6'>
+                  <div class='cd-filter-block checkbox-group'>
+                    <h4>STORAGE</h4>
+                    <ul class='cd-filter-content cd-filters list'>
+                      <li></li>
+                      <li>
+                        <button
+                          onClick={() => filterStatus('storage', '5 ssd')}
+                          className='btn btn-outline-success'
+                          value='.cores4'
+                          type='checkbox'
+                          id='checkbox2'
+                        >
+                          5 SSD
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => filterStatus('storage', '32 ssd')}
+                          className='btn btn-outline-success'
+                          value='.cores6'
+                          type='checkbox'
+                          id='checkbox3'
+                        >
+                          32 SSD
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => filterStatus('storage', '64 ssd')}
+                          className='btn btn-outline-success'
+                          value='.cores8'
+                          type='checkbox'
+                          id='checkbox4'
+                        >
+                          64 SSD
+                        </button>
+                        {/* <label class="checkbox-label" for="checkbox4">8</label> */}
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => filterStatus('storage', '128 ssd')}
+                          className='btn btn-outline-success'
+                          value='.cores12'
+                          type='checkbox'
+                          id='checkbox5'
+                        >
+                          128 SSD
+                        </button>
+                        {/* <label class="checkbox-label" for="checkbox5">12</label> */}
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>

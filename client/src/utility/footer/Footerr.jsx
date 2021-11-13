@@ -1,4 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  FaFacebookF,
+  BsTwitter,
+  AiFillInstagram,
+  BsLinkedin,
+} from 'react-icons/all';
+import { footer } from './data';
 import './footer.css';
 
 const Footerr = () => {
@@ -11,34 +19,24 @@ const Footerr = () => {
             <div className='col-sm-6 col-md-3'>
               <div className='heading'>Hosting</div>
               <ul className='footer-menu'>
-                <li className='menu-item'>
-                  <a href='hosting'>Shared Hosting</a>
-                </li>
-                <li className='menu-item'>
-                  <a href='dedicated'>Dedicated Server</a>
-                </li>
-                <li className='menu-item'>
-                  <a href='vps'>Cloud Virtual (VPS)</a>
-                </li>
-                <li className='menu-item'>
-                  <a href='domains'>Domain Names</a>
-                </li>
+                {footer.map((x) => {
+                  const { id, path, name } = x;
+                  return (
+                    <li className='menu-item' key={id}>
+                      <Link to={path}>{name}</Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className='col-sm-6 col-md-3'>
               <div className='heading'>Support</div>
               <ul className='footer-menu'>
                 <li className='menu-item'>
-                  <a href='login'>WorldStream</a>
-                </li>
+                  <Link to='/'>WorldStream</Link>
+                </li>{' '}
                 <li className='menu-item'>
-                  <a href='knowledgebase-list'>Knowledge Base</a>
-                </li>
-                <li className='menu-item'>
-                  <a href='contact'>Contact Us</a>
-                </li>
-                <li className='menu-item'>
-                  <a href='faq'>FAQ</a>
+                  <Link to='/support'>Support</Link>
                 </li>
               </ul>
             </div>
@@ -61,27 +59,27 @@ const Footerr = () => {
             </div>
             <div className='col-sm-6 col-md-3'>
               <a>
-                <img
+                {/* <img
                   className='svg logo-footer'
                   src='img/logo.svg'
                   alt='logo'
-                />
+                /> */}
               </a>
               <div className='copyrigh'>
                 ©{new Date().getFullYear()} WorldStream - All rights reserved
               </div>
               <div className='soc-icons'>
                 <a href=''>
-                  <i className='fab fa-facebook-f'></i>
+                  <FaFacebookF className='' />
                 </a>
                 <a href=''>
-                  <i className='fab fa-youtube'></i>
+                  <BsTwitter className='' />
                 </a>
                 <a href=''>
-                  <i className='fab fa-twitter'></i>
+                  <AiFillInstagram className='' />
                 </a>
                 <a href=''>
-                  <i className='fab fa-instagram'></i>
+                  <BsLinkedin className='' />
                 </a>
               </div>
             </div>

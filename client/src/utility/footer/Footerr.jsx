@@ -29,7 +29,7 @@ const Footerr = () => {
               <div className='heading'>Support</div>
               <ul className='footer-menu'>
                 <li className='menu-item'>
-                  <a href='login'>myAntler</a>
+                  <a href='login'>WorldStream</a>
                 </li>
                 <li className='menu-item'>
                   <a href='knowledgebase-list'>Knowledge Base</a>
@@ -67,7 +67,9 @@ const Footerr = () => {
                   alt='logo'
                 />
               </a>
-              <div className='copyrigh'>©2021 Antler - All rights reserved</div>
+              <div className='copyrigh'>
+                ©{new Date().getFullYear()} WorldStream - All rights reserved
+              </div>
               <div className='soc-icons'>
                 <a href=''>
                   <i className='fab fa-facebook-f'></i>
@@ -106,7 +108,9 @@ const Footerr = () => {
                 </div>
               </div>
               <div className='col-md-6 offset-md-3 text-center pt-4'>
-                <p>Subscribe to our newsletter to receive news and updates</p>
+                <p style={{ color: '#aaaaaa' }}>
+                  Subscribe to our newsletter to receive news and updates
+                </p>
               </div>
             </form>
           </div>

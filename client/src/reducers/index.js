@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+// import Cookie from 'js-cookie'
 import { cart_reducer } from './cart.reducer';
 import {
   getPlanCount_reducer,
@@ -15,6 +16,9 @@ import {
   LoginReducer,
   UpdateUser_reducer,
 } from './signup.reducer';
+
+// const userInfo = Cookie.get('userInfo');
+// const initialState = { LoginReducer: userInfo };
 
 export default combineReducers({
   signupReducer: SignupReducer,

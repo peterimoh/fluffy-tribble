@@ -12,7 +12,7 @@ import {
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_SUCCESS,
 } from '../actions/action.types';
-
+import Cookie from 'js-cookie'
 const initState = {
   loading: false,
   message: false,

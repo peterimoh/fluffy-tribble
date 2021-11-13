@@ -5,7 +5,7 @@ import { navLinks } from '../data';
 import { useSelector } from 'react-redux';
 import '../navbar/navbar.css'
 
-const MobileNav = () => {
+const MobileNav = ({ response }) => {
   const LoginAuth = useSelector((state) => state.LoginAuth);
   const { isAuth } = LoginAuth;
   $(document).on('click', '#nav-toggle', function () {
@@ -23,7 +23,7 @@ const MobileNav = () => {
           </div>
           <div className='col-6'>
             <nav className='nav-menu'>
-              <button id='nav-toggle' className='menu-toggle'>
+              <button id='nav-toggle' className='menu-toggle '>
                 <span className='icon'></span>
                 <span className='icon'></span>
                 <span className='icon'></span>
@@ -64,7 +64,9 @@ const MobileNav = () => {
                 </div>
                 <div>
                   {isAuth ? (
-                    <Link to='/dashboard'>
+                    <Link
+                      to={response && `/dashboard/${response.data.user._id}`}
+                    >
                       <div className='btn btn-default-yellow-fill mt-3'>
                         CLIENT AREA
                       </div>

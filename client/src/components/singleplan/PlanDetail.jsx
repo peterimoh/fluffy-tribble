@@ -3,18 +3,14 @@ import React from 'react';
 
 const PlanDetail = (props) => {
   const { loading, details, error } = props;
-  console.log(details);
-//   if (details) {
-//     const { msg, data } = details;
-//   }
-
+ 
   const showLoading = () => {
-    if (loading) return <div classNameName='alert alert-info'>Loading...</div>;
+    if (loading) return <div className='alert alert-info'>Loading...</div>;
   };
 
   const showError = () => {
     if (error) {
-      return <div classNameName='alert alert-danger'>{error}</div>;
+      return <div className='alert alert-danger'>{error}</div>;
     }
   };
 

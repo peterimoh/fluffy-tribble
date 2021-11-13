@@ -27,11 +27,11 @@ export const Product = () => {
 
   useEffect(() => {
     dispatch(getProduct());
-    
-     if (data) {
-       setProduct(...data);
-      }
-    }, []);
+
+    if (data) {
+      setProduct(data);
+    }
+  }, []);
     console.log(productData);
   const host = 'http://127.0.0.1:8080/';
 

@@ -20,6 +20,7 @@ const getProduct = () => async (dispatch) => {
     });
     dispatch({ type: GET_PRODUCT_SUCCESS, payload: data });
   } catch (error) {
+    console.log("sdvsvfkfndfibf", error.response)
     dispatch({
       type: GET_PRODUCT_FAIL,
       payload: error.response.data.error,

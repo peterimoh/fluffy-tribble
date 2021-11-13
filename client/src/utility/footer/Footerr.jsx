@@ -69,18 +69,18 @@ const Footerr = () => {
                 ©{new Date().getFullYear()} WorldStream - All rights reserved
               </div>
               <div className='soc-icons'>
-                <a href=''>
+                <Link to=''>
                   <FaFacebookF className='' />
-                </a>
-                <a href=''>
+                </Link>
+                <Link to=''>
                   <BsTwitter className='' />
-                </a>
-                <a href=''>
+                </Link>
+                <Link to=''>
                   <AiFillInstagram className='' />
-                </a>
-                <a href=''>
+                </Link>
+                <Link to=''>
                   <BsLinkedin className='' />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

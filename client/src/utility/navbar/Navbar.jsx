@@ -15,11 +15,9 @@ const Navbar = () => {
   const [classs, setClasss] = useState(false);
 
  
-  // if (response) { const { user } = response.data }
-
   return (
     <header id='header'>
-      <Topbar response={response&&response} />
+      <Topbar response={response && response} />
       {/* <!-- ***** NAV MENU DESKTOP ****** --> */}
       <div className={classs ? 'menu-wrap fixed sticky' : 'menu-wrap'}>
         <div className='nav-menu'>
@@ -82,7 +80,12 @@ const Navbar = () => {
                     </li>
                     <li className='menu-item  mb-3'>
                       {isAuth ? (
-                        <Link className='pe-0 me-0 ' to={response && `/dashboard/${response.data.user._id}`}>
+                        <Link
+                          className='pe-0 me-0 '
+                          to={
+                            response && `/dashboard/${response.data.user._id}`
+                          }
+                        >
                           <div className='btn btn-default-yellow-fill question mb-3'>
                             <span data-i18n='[html]header.login'>
                               Client Area
@@ -112,7 +115,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <MobileNav />
+      <MobileNav response={response && response} />
     </header>
   );
 };

@@ -1,6 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link as a } from 'react-router-dom'
 import { BiFilterAlt } from 'react-icons/bi';
 
 
@@ -31,9 +30,9 @@ const Banner = () => {
                   Anti-DDoS as standard.
                   <br />
                 </h3>
-                <Link className='btnnn btn-default-pink-fill cd-filter-trigger wow animated shake delay-2s'>
+                <a className='btnnn btn-default-pink-fill cd-filter-trigger wow animated shake delay-2s'>
                   <BiFilterAlt /> Show Filter
-                </Link>
+                </a>
               </div>
             </div>
           </div>

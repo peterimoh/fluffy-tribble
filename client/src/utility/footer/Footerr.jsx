@@ -122,14 +122,14 @@ const Footerr = () => {
                 <li id='drop-lng' className='btn-group btn-group-toggle'>
                   <label
                     data-lng='en-US'
-                    for='option1'
+                    htmlFor='option1'
                     className='btn btn-secondary'
                   >
                     <input type='radio' name='options' id='option1' /> EN
                   </label>
                   <label
                     data-lng='pt-PT'
-                    for='option2'
+                    htmlFor='option2'
                     className='btn btn-secondary'
                   >
                     <input type='radio' name='options' id='option2' /> PT

@@ -29,7 +29,7 @@ const Hero = () => {
                   time of 7 minutes, we are always there for you, 24/7, 365 days
                   a year.
                   <br />
-                  <Link to='#features' className='golink gocheck'>
+                  {/* <Link to='#features' className='golink gocheck'>
                     {' '}
                     <small>Features</small>{' '}
                   </Link>{' '}
@@ -42,7 +42,7 @@ const Hero = () => {
                   <Link to='#highlights' className='golink gocheck'>
                     {' '}
                     <small>Highlights</small>
-                  </Link>
+                  </Link> */}
                 </h3>
                 {/* <Link to='#' className='btnnn btn-default-pink-fill cd-filter-trigger wow animated shake delay-2s'>
                   <BiFilterAlt/> Show Filter

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { BiFilterAlt } from 'react-icons/bi';
-// import Shape from '../assets/images/globe-2x.webp'
+
 
 const Banner = () => {
     return (

@@ -7,7 +7,6 @@ import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
 import thunk from 'redux-thunk';
 import App from './App';
-// import Cookie from 'js-cookie';
 import reportWebVitals from './reportWebVitals';
 import rootReducer from './reducers/index';
 import './generalStyle.css';
@@ -16,8 +15,7 @@ import './sections.css';
 import './buttons.css';
 import './mixitup.css';
 
-// const userInfo = Cookie.get('userInfo');
-// console.log(userInfo)
+
 const initialState = {};
 
 const persistConfig = {
@@ -29,7 +27,6 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = createStore(
   persistedReducer,
-  // rootReducer,
   initialState,
   compose(
     applyMiddleware(thunk),

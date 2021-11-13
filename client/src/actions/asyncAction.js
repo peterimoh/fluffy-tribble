@@ -13,7 +13,6 @@ import {
   UPDATE_PASSWORD_SUCCESS,
 } from './action.types';
 import axios from 'axios';
-import Cookie from 'js-cookie';
 
 const createAccount = (userObj) => async (dispatch) => {
   dispatch({
@@ -60,9 +59,7 @@ const Login = (userObj) => async (dispatch) => {
   try {
     const data = await axios.post('/api/login', userObj);
     dispatch({ type: LOGIN_SUCCESS, payload: data });
-    // Cookie.set('userInfo', JSON.stringify(data.token), {
-    //   expires: 1, sameSite: 'None', secure: true
-    // });
+  
   } catch (err) {
     dispatch({ type: LOGIN_FAIL, payload: err.response.data.error });
   

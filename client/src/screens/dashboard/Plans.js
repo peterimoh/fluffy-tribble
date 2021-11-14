@@ -43,7 +43,7 @@ const Plans = ({ plans }) => {
                           sx={{
                             '&:last-child td, &:last-child th': { border: 0 },
                           }}
-                        >
+                        key={_id}>
                           <TableCell>{_id}</TableCell>
                           <TableCell>
                             <button className='bg-success badge badge-success p-2'>

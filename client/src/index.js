@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import storageSession from 'redux-persist/lib/storage/session';
 import { PersistGate } from 'redux-persist/integration/react';
 import thunk from 'redux-thunk';
 import App from './App';
@@ -15,18 +16,21 @@ import './sections.css';
 import './buttons.css';
 import './mixitup.css';
 
-
+// const userInfo = Cookie.get('userInfo');
+// console.log(userInfo)
 const initialState = {};
 
 const persistConfig = {
   key: 'isAuth',
-  storage,
+  storageSession,
+  storage
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = createStore(
   persistedReducer,
+  // rootReducer,
   initialState,
   compose(
     applyMiddleware(thunk),

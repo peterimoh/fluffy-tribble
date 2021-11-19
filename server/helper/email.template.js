@@ -39,4 +39,24 @@ const registerUserTemp = (user) => {
   return { from, to, subject, html };
 };
 
-module.exports = { transporter, activateUserTemp, registerUserTemp };
+const invoiceTemp = (usr, response) => {
+  const from = config.email;
+  const to = usr && usr.email;
+  const subject = `${response.plan} Plan purchase success`;
+  console.log(from, to, subject)
+  // console.log(usr)
+
+  const html = `
+    <p>Hello ${usr.first_name}</p>
+  <p>You have successfully purchased a ${response.plan} plan which will run from ${response.depositDate} to ${response.dueDate}. Your Plan is now <span style='color: green'>${response.status}</span></p>
+  <p>Best regards,</p>
+    `;
+   return { from, to, subject, html };
+};
+
+module.exports = {
+  transporter,
+  activateUserTemp,
+  registerUserTemp,
+  invoiceTemp,
+};

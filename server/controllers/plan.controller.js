@@ -1,9 +1,11 @@
 const braintree = require('braintree');
-const moment = require('moment')
+const moment = require('moment');
 const Plan = require('../models/plan.model');
+const User = require('../models/user.model');
 const { Packages } = require('../utils/packages');
 const { subscriptionPlans } = require('../utils/runningPlan');
 const config = require('../config/config');
+const { transporter, invoiceTemp } = require('../helper/email.template');
 const { getErrorMessage } = require('../helper/dbErrorHandler');
 
 //braintree config
@@ -19,12 +21,19 @@ exports.subscription__Plan = async (req, res) => {
   let subscriptionPlan = req.params.id.split('$')[1];
 
   if (Packages[subscriptionPkg] === undefined) {
-    return res.status(404).json({ error: 'Plan does not exist' });
+    return res.status(404).json({
+      error: 'Plan does not exist',
+    });
   } else if (Packages[subscriptionPkg][subscriptionPlan] === undefined) {
-    return res.status(404).json({ error: 'Plan does not exist' });
+    return res.status(404).json({
+      error: 'Plan does not exist',
+    });
   } else {
     const result = Packages[subscriptionPkg][subscriptionPlan];
-    res.status(200).json({ msg: 'Package found', data: result });
+    res.status(200).json({
+      msg: 'Package found',
+      data: result,
+    });
   }
 };
 
@@ -32,8 +41,13 @@ exports.getToken = (req, res) => {
   gateway.clientToken.generate({}, (err, response) => {
     console.log(req.params.userId);
 
-    if (err) return res.status(500).json({ error: err });
-    res.status(200).json({ response });
+    if (err)
+      return res.status(500).json({
+        error: err,
+      });
+    res.status(200).json({
+      response,
+    });
   });
 };
 
@@ -47,11 +61,16 @@ exports.processPayment = async (req, res) => {
     {
       amount: amountFromTheClient,
       paymentMethodNonce: nonceFromTheClient,
-      options: { submitForSettlement: true },
+      options: {
+        submitForSettlement: true,
+      },
     },
     async (err, result) => {
       console.log('err0r:' + err);
-      if (err) return res.status(400).json({ error: err });
+      if (err)
+        return res.status(400).json({
+          error: err,
+        });
       if (result) {
         if (result.success === true) {
           // let {running, pending} = subscriptionPlans(result)
@@ -65,10 +84,10 @@ exports.processPayment = async (req, res) => {
           let now = new Date();
           let due_date_converter = now.setTime(
             now.getTime() + duration * 24 * 60 * 60 * 1000
-            );
-            let due_date = new Date(due_date_converter);
-          let format_deposit_date = moment(deposit_date).format('DD-MMM-YYYY')
-          let format_due_date = moment(due_date).format('DD-MMM-YYYY')
+          );
+          let due_date = new Date(due_date_converter);
+          let format_deposit_date = moment(deposit_date).format('DD-MMM-YYYY');
+          let format_due_date = moment(due_date).format('DD-MMM-YYYY');
 
           const newPlan = new Plan({
             recieptStatus: true,
@@ -78,9 +97,24 @@ exports.processPayment = async (req, res) => {
             depositDate: format_deposit_date,
             user_id: userID,
           });
-          newPlan.save((err, res) => {
+          newPlan.save((err, plann) => {
             if (err) return console.log(err);
-            // return res.status(200).json({ message: 'Plan bought successfully' });
+
+            User.find(
+              {
+                _id: userID,
+              },
+              (err, usr) => {
+                if (err) {
+                  console.log('Server Error');
+                } else {
+                  const sendEmail = async () => {
+                    transporter.sendMail(invoiceTemp(...usr, plann));
+                  };
+                  sendEmail();
+                }
+              }
+            );
           });
         } else {
           const newPlan = new Plan({
@@ -108,30 +142,55 @@ exports.processPayment = async (req, res) => {
   );
 };
 
-exports.GetPlan =  (req, res) => {
+exports.GetPlan = (req, res) => {
   let pending = [];
   let running = [];
   let userID = req.params.userId;
- Plan.find({ user_id: userID }, (err, plan) => {
-    if (err) return res.status(400).json({ error: err });
-    if (plan) {
-      for (var obj of plan) {
-        obj.status == 'pending' ? pending.push(obj) : running.push(obj);
+  Plan.find(
+    {
+      user_id: userID,
+    },
+    (err, plan) => {
+      if (err)
+        return res.status(400).json({
+          error: err,
+        });
+      if (plan) {
+        for (var obj of plan) {
+          obj.status == 'pending' ? pending.push(obj) : running.push(obj);
+        }
+        let runningCounter = running.length;
+        let pendingCounter = pending.length;
+        return res.status(200).json({
+          msg: 'SUCCESS ',
+          runningCounter,
+          pendingCounter,
+        });
       }
-      let runningCounter = running.length;
-      let pendingCounter = pending.length;
-      return res.status(200).json({ msg: 'SUCCESS ', runningCounter, pendingCounter });
     }
-  });
+  );
 };
 
 exports.runningPlans = async (req, res) => {
-    let userID = req.params.userId;
-  await Plan.find({ user_id: userID }, (err, plan) => {
-    if (err) return res.status(400).json({ error: err })
-    let { running, pending } = subscriptionPlans(plan)
-    console.log(`runing======================================== ${running}==================================`);
-    // console.log(pending);
-    res.status(200).json({running, pending})
-  })
-} 
+  let userID = req.params.userId;
+  await Plan.find(
+    {
+      user_id: userID,
+    },
+    (err, plan) => {
+      if (err)
+        return res.status(400).json({
+          error: err,
+        });
+      let { running, pending } = subscriptionPlans(plan);
+      console.log(
+        `runing======================================== ${running}==================================`
+      );
+      // console.log(pending);
+      res.status(200).json({
+        running,
+        pending,
+      });
+    }
+  );
+};

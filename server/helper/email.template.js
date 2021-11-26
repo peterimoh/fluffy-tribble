@@ -43,8 +43,6 @@ const invoiceTemp = (usr, response) => {
   const from = config.email;
   const to = usr && usr.email;
   const subject = `${response.plan} Plan purchase success`;
-  console.log(from, to, subject)
-  // console.log(usr)
 
   const html = `
     <p>Hello ${usr.first_name}</p>

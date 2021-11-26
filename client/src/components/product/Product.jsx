@@ -11,24 +11,25 @@ import { getProduct } from '../../actions/productAction';
 import './filter.css';
 
 export const Product = () => {
-  const [productData, setProduct] = useState([]);
   const products = useSelector((state) => state.products);
   const { loading, data, error } = products;
+  const [productData, setProduct] = useState({ ...data });
 
   const dispatch = useDispatch();
 
-  const filterStatus = (key, value) => {
+ const filterStatus = (key, value) => {
     if (data)
       return setProduct(data.filter((element) => element[key] == value));
   };
 
   useEffect(() => {
     dispatch(getProduct());
-
-    if (data) {
-      setProduct(data);
-    }
+   if (data) {
+     setProduct(data);
+   }
   }, []);
+
+
   console.log(productData);
   const host = 'http://127.0.0.1:8080/';
 
